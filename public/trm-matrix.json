@@ -1,0 +1,171 @@
+{
+  "source": "10.1038/s41467-021-25433-6",
+  "figure": 4,
+  "page": 7,
+  "positions": [
+    12,
+    13,
+    16
+  ],
+  "rows": [
+    {
+      "A": [
+        "SRQ"
+      ],
+      "C": [
+        "QFR",
+        "TFR",
+        "SFK"
+      ],
+      "G": [
+        "SGD"
+      ],
+      "U": [
+        "NYQ",
+        "NFQ"
+      ]
+    },
+    {
+      "A": [
+        "VFQ",
+        "CFP",
+        "SRQ"
+      ],
+      "C": [],
+      "G": [],
+      "U": [
+        "NYQ",
+        "NFW",
+        "NFP"
+      ]
+    },
+    {
+      "A": [
+        "TRQ",
+        "CRQ"
+      ],
+      "C": [
+        "QFR"
+      ],
+      "G": [
+        "SNE",
+        "THE",
+        "TTE"
+      ],
+      "U": [
+        "NTQ",
+        "NPG"
+      ]
+    },
+    {
+      "A": [
+        "RGY",
+        "RMY",
+        "RLY"
+      ],
+      "C": [
+        "SYR",
+        "TFR",
+        "CRR"
+      ],
+      "G": [],
+      "U": [
+        "NWP",
+        "NYP"
+      ]
+    },
+    {
+      "A": [
+        "PHQ",
+        "CRQ"
+      ],
+      "C": [
+        "TTR",
+        "TKR",
+        "CKR"
+      ],
+      "G": [
+        "GVD"
+      ],
+      "U": [
+        "RAN",
+        "QKQ",
+        "GNS"
+      ]
+    },
+    {
+      "A": [
+        "VFH",
+        "VFW",
+        "VWH"
+      ],
+      "C": [],
+      "G": [
+        "SWD",
+        "SHE",
+        "SRE"
+      ],
+      "U": [
+        "NYQ",
+        "TWK",
+        "HHR"
+      ]
+    },
+    {
+      "A": [
+        "MHQ"
+      ],
+      "C": [
+        "KWN",
+        "ERN"
+      ],
+      "G": [
+        "SNE",
+        "DWE",
+        "DFE"
+      ],
+      "U": [
+        "NPG",
+        "NPS",
+        "NSG"
+      ]
+    },
+    {
+      "A": [
+        "QLR"
+      ],
+      "C": [],
+      "G": [],
+      "U": [
+        "NYQ",
+        "NWP",
+        "NYP"
+      ]
+    }
+  ],
+  "authorUsed": {
+    "1": {
+      "C": "QFR"
+    },
+    "2": {
+      "A": "VFQ"
+    },
+    "3": {
+      "G": "THE"
+    },
+    "4": {
+      "C": "TFR"
+    },
+    "5": {
+      "A": "PHQ"
+    },
+    "6": {
+      "G": "SWD"
+    },
+    "7": {
+      "U": "NPG"
+    }
+  },
+  "emptyMeaning": "No highly base-specific TRM detected; not zero binding",
+  "quantitativeScores": null
+}
