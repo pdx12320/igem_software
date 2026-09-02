@@ -1,0 +1,65 @@
+[
+  {
+    "id": "gencode",
+    "authors": "GENCODE.",
+    "year": "n.d.",
+    "title": "Human release 50 (GRCh38.p14)",
+    "type": "web",
+    "retrieval": "Retrieved September 2, 2026, from",
+    "url": "https://www.gencodegenes.org/human/"
+  },
+  {
+    "id": "han2025",
+    "authors": "Han, W., Yuan, B., Fan, X., Li, W., Yuan, Y., Zhang, Y., Wang, S., Shan, S., Hafner, M., Wang, Z., & Qiu, Z.",
+    "year": "2025",
+    "title": "Effective in vivo RNA base editing via engineered cytidine deaminase APOBECs fused with PUF proteins",
+    "type": "article",
+    "journal": "Nature Communications",
+    "volume": "16",
+    "locator": "Article 9727",
+    "url": "https://doi.org/10.1038/s41467-025-64748-6"
+  },
+  {
+    "id": "lamar",
+    "authors": "pdx12320.",
+    "year": "n.d.",
+    "title": "PUF_fine_tuning_version1",
+    "type": "software",
+    "descriptor": "[Computer software]",
+    "publisher": "GitHub",
+    "url": "https://github.com/pdx12320/PUF_fine_tuning_version1"
+  },
+  {
+    "id": "pdb1m8y",
+    "authors": "Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T.",
+    "year": "2002a",
+    "title": "Crystal structure of the Pumilio-homology domain from human Pumilio1 in complex with NRE2-10 RNA",
+    "type": "dataset",
+    "descriptor": "[Data set]",
+    "publisher": "RCSB Protein Data Bank",
+    "url": "https://doi.org/10.2210/pdb1M8Y/pdb"
+  },
+  {
+    "id": "wang2002",
+    "authors": "Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T.",
+    "year": "2002b",
+    "title": "Modular recognition of RNA by a human Pumilio-homology domain",
+    "type": "article",
+    "journal": "Cell",
+    "volume": "110",
+    "issue": "4",
+    "locator": "501–512",
+    "url": "https://doi.org/10.1016/S0092-8674(02)00873-5"
+  },
+  {
+    "id": "zhou2021",
+    "authors": "Zhou, W., Melamed, D., Banyai, G., Meyer, C., Tuschl, T., Wickens, M., Cao, J., & Fields, S.",
+    "year": "2021",
+    "title": "Expanding the binding specificity for RNA recognition by a PUF domain",
+    "type": "article",
+    "journal": "Nature Communications",
+    "volume": "12",
+    "locator": "Article 5107",
+    "url": "https://doi.org/10.1038/s41467-021-25433-6"
+  }
+]

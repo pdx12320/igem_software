@@ -7,7 +7,7 @@ PUF Studio designs PUF recognition modules upstream of a selected RNA C→U edit
 ## Workflow
 
 1. **Choose a window:** paste RNA/DNA or one FASTA record, enter a 1-based target C coordinate, and choose an 8–12 nt recognition window. The target lies at binding end +2–5 nt.
-2. **Design TRMs:** select one TRM per repeat. R1 recognizes the RNA motif’s 3′ base. A single ★ marks native-matrix support for that repeat and RNA base. Other published codes remain selectable.
+2. **Design TRMs:** select one TRM per repeat. R1 recognizes the RNA motif’s 3′ base. Gold ★ preference chips are visible in each repeat row and can be selected directly. They mark native-matrix support for that repeat and RNA base. The selector retains all published candidates.
 3. **LAMAR off-targets:** inspect similar sequences and all downstream C sites at +2–5. Import actual LAMAR ranking scores for their 101-nt C-centered RNA contexts.
 4. **Review & export:** download a standalone **Design Report.html**, print it to PDF, or export complete JSON, PUF FASTA and hit TSV.
 
@@ -74,9 +74,16 @@ Import JSON containing `modelVersion`, `referenceSet`, `scoreType: "ranking_scor
 
 A future backend should install a versioned full-transcript FASTA, including UTRs, with matching GTF/GFF3 annotation; normal users then select a reference. The planned API is documented in the handoff. Do not treat the browser subset screen as a whole-transcriptome result.
 
-## References
+## References (APA 7)
 
-- Zhou et al., 2021: [Native PUM1 TRM matrix, Figure 4](https://www.nature.com/articles/s41467-021-25433-6).
-- Han et al., 2025: [CU-REWIRE editing window](https://www.nature.com/articles/s41467-025-64748-6).
-- [PDB 1M8Y PUM1 sequence](https://www.rcsb.org/fasta/entry/1M8Y/display).
-- [LAMAR fine-tuning repository](https://github.com/pdx12320/PUF_fine_tuning_version1).
+GENCODE. (n.d.). *Human release 50 (GRCh38.p14)*. Retrieved September 2, 2026, from [https://www.gencodegenes.org/human/](https://www.gencodegenes.org/human/)
+
+Han, W., Yuan, B., Fan, X., Li, W., Yuan, Y., Zhang, Y., Wang, S., Shan, S., Hafner, M., Wang, Z., & Qiu, Z. (2025). Effective in vivo RNA base editing via engineered cytidine deaminase APOBECs fused with PUF proteins. *Nature Communications, 16*, Article 9727. [https://doi.org/10.1038/s41467-025-64748-6](https://doi.org/10.1038/s41467-025-64748-6)
+
+pdx12320. (n.d.). *PUF_fine_tuning_version1* [Computer software]. GitHub. [https://github.com/pdx12320/PUF_fine_tuning_version1](https://github.com/pdx12320/PUF_fine_tuning_version1)
+
+Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T. (2002a). *Crystal structure of the Pumilio-homology domain from human Pumilio1 in complex with NRE2-10 RNA* [Data set]. RCSB Protein Data Bank. [https://doi.org/10.2210/pdb1M8Y/pdb](https://doi.org/10.2210/pdb1M8Y/pdb)
+
+Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T. (2002b). Modular recognition of RNA by a human Pumilio-homology domain. *Cell, 110*(4), 501–512. [https://doi.org/10.1016/S0092-8674(02)00873-5](https://doi.org/10.1016/S0092-8674(02)00873-5)
+
+Zhou, W., Melamed, D., Banyai, G., Meyer, C., Tuschl, T., Wickens, M., Cao, J., & Fields, S. (2021). Expanding the binding specificity for RNA recognition by a PUF domain. *Nature Communications, 12*, Article 5107. [https://doi.org/10.1038/s41467-021-25433-6](https://doi.org/10.1038/s41467-021-25433-6)

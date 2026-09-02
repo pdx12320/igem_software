@@ -136,3 +136,23 @@ GENCODE提供 transcript sequences 和 matching annotation：https://www.gencode
 - `preferredForRepeat`星标的判定为：该TRM出现在本scaffold repeat所对应的天然矩阵行、当前碱基那一格。该格所有代码均为单星。跨行候选仍可选、无星。星标是定性矩阵支持，不使用作者红字冒充亲和力排名。
 - 9–11R缺少对应scaffold/映射，不自动推断repeat偏好星标。
 - 功能区保留参数、结果、错误、缺失状态与必要图例，详细解释和引用集中在Methods。
+
+## 显示偏好与 APA 引用（2026-09-02）
+
+每个 repeat 的偏好候选以金色星标按钮常显，点击直接选择；下方 Selected TRM 保留全部候选。偏好依据沿用原有矩阵，未新增亲和力分数或未提供的9–11R映射。
+
+Methods 的文内引用及文末参考文献统一为 APA 7。作者全列、期刊与卷号斜体、DOI 使用链接；相同作者2002年的结构数据与论文用2002a/2002b区分。参考条目集中保存在 `data/references.json`。
+
+### References
+
+GENCODE. (n.d.). *Human release 50 (GRCh38.p14)*. Retrieved September 2, 2026, from [https://www.gencodegenes.org/human/](https://www.gencodegenes.org/human/)
+
+Han, W., Yuan, B., Fan, X., Li, W., Yuan, Y., Zhang, Y., Wang, S., Shan, S., Hafner, M., Wang, Z., & Qiu, Z. (2025). Effective in vivo RNA base editing via engineered cytidine deaminase APOBECs fused with PUF proteins. *Nature Communications, 16*, Article 9727. [https://doi.org/10.1038/s41467-025-64748-6](https://doi.org/10.1038/s41467-025-64748-6)
+
+pdx12320. (n.d.). *PUF_fine_tuning_version1* [Computer software]. GitHub. [https://github.com/pdx12320/PUF_fine_tuning_version1](https://github.com/pdx12320/PUF_fine_tuning_version1)
+
+Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T. (2002a). *Crystal structure of the Pumilio-homology domain from human Pumilio1 in complex with NRE2-10 RNA* [Data set]. RCSB Protein Data Bank. [https://doi.org/10.2210/pdb1M8Y/pdb](https://doi.org/10.2210/pdb1M8Y/pdb)
+
+Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T. (2002b). Modular recognition of RNA by a human Pumilio-homology domain. *Cell, 110*(4), 501–512. [https://doi.org/10.1016/S0092-8674(02)00873-5](https://doi.org/10.1016/S0092-8674(02)00873-5)
+
+Zhou, W., Melamed, D., Banyai, G., Meyer, C., Tuschl, T., Wickens, M., Cao, J., & Fields, S. (2021). Expanding the binding specificity for RNA recognition by a PUF domain. *Nature Communications, 12*, Article 5107. [https://doi.org/10.1038/s41467-021-25433-6](https://doi.org/10.1038/s41467-021-25433-6)
