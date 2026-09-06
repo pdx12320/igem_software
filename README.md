@@ -4,6 +4,10 @@ PUF Studio designs PUF recognition modules upstream of a selected RNA C→U edit
 
 [Open PUF Studio](https://puf-studio-igem.pdx12320.chatgpt.site)
 
+## iGEM showcase
+
+The Overview opens with a live RNA-to-TRM mapping and links to every workflow stage. Run example loads the synthetic 12R example and resets the module library and imported scores. The workbench includes transcript-ID search, exact-match / downstream-C filters, and export-readiness indicators. TSV export always contains all matches, independent of on-screen filters.
+
 ## Workflow
 
 1. **Choose a window:** paste RNA/DNA or one FASTA record, enter a 1-based target C coordinate, and choose an 8–12 nt recognition window. The target lies at binding end +2–5 nt.
