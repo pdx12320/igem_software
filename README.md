@@ -99,3 +99,13 @@ The Overview includes a coordinate-backed 3Dmol.js viewer for the uploaded WT PU
 Model 0 is used by its AF3 ranking, with ipTM 0.91 and pTM 0.89. Five models from the same seed have ipTM 0.90–0.91. The audit records mean atom pLDDT, exact residue mapping, minimum TRM–RNA heavy-atom distances, and source ZIP checksum. The designed antiparallel register is explicit; geometry and confidence do not estimate editing efficiency.
 
 Reproduce packaging with scripts/prepare-structure.py and the source ZIP path. Only the selected CIF, input, compact audit and output terms are bundled. Source MSA/template files are not required at runtime. The viewer is served locally from public/vendor; see its BSD license and bundled notices. AF3 output retains its separate terms in public/structures/alphafold-output-terms.md.
+
+## Guided cases and engineering workspace
+
+- C388 guided case loads the supplied 15-nt C388 RNA at local C15 and exactly reconstructs WT PUF12. The two supplied C295/C871 fragments are labeled as a limited reference. No synthetic flanks or LAMAR scores are added.
+- Save/Open project round-trips the applied target, references, full module library, chosen TRMs, scores, experiment records, fusion inputs, notes and verified optional CIF structures. Inputs are validated and analysis is recomputed before restoring state. Apply draft edits before saving.
+- Evidence & engineering compares the supplied named constructs against WT, showing sequence/TRM differences and imported biological replicates. Assay labels must distinguish cell/dose/time/batch. Percentages are 0–100; SD is sample SD and unavailable for n=1. Delta is measured in percentage points.
+- Validation accepts the downloadable JSON template and exact IDs from the original construct catalog. No experimental editing efficiencies have been prefilled.
+- Fusion builder assembles the current PUF with user-provided linker and APOBEC in either order, then exports FASTA and one-based domain annotations.
+- LAMAR jobs connects to a user-entered HTTPS service and its real reference catalog, submits targets, refreshes states, resumes by job ID and downloads/imports results. See public/lamar-service-contract.md. No model service or transcriptome is bundled.
+- The structure viewer now links selectable TRM amino acids, the RNA register and the 3D view. Comparison accepts CIF files only after exact chain A protein and chain B RNA validation.
