@@ -5,21 +5,22 @@ import {Button} from '@/components/ui/button';
 import {NativeSelect} from '@/components/ui/native-select';
 import {Tabs,TabsList,TabsTrigger,TabsContent} from '@/components/ui/tabs';
 import {modulePlan,type Candidate,type ModuleLibrary} from '@/lib/design';
-import {defaultOrder,referenceEditable,sourceOrder,withArchitecture,preferredCodes,baselineProtein,repeatSpans,af3Input} from '@/lib/architecture';
+import {defaultOrder,updateSourceOrder,referenceEditable,sourceOrder,withArchitecture,preferredCodes,baselineProtein,repeatSpans,af3Input} from '@/lib/architecture';
 import type {StructureResult} from '@/lib/af3-analysis';
 import StructureAssessment from './structure-assessment';
+import ExpertDesigner from './expert-designer';
 export function saveFile(name:string,value:unknown){const text=typeof value==='string'?value:JSON.stringify(value,null,2);const url=URL.createObjectURL(new Blob([text],{type:name.endsWith('.json')?'application/json':'text/plain'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 export default function ArchitectureBuilder({candidate:c,library,overrides,onLibrary,onOverrides,rna,evidence,onEvidence,level,onLevel:setLevel}:{candidate:Candidate;library:ModuleLibrary;overrides:Record<number,string>;onLibrary:(v:ModuleLibrary)=>void;onOverrides:(v:Record<number,string>)=>void;rna:string;level:string;onLevel:(v:string)=>void;evidence:StructureResult[];onEvidence:(v:StructureResult[])=>void}){
  const [phase,setPhase]=useState('architecture'),[active,setActive]=useState(1),[error,setError]=useState('');
  const order=sourceOrder(library,c.n),plan=modulePlan(c,library,overrides),pos=Math.min(active,c.n),row=plan.rows[pos-1];
  const editable=referenceEditable(library,c.n);
  const baseline=baselineProtein(library,c.n);const spans=repeatSpans(plan.scaffold);
- function apply(order:number[]){try{onLibrary(withArchitecture(library,c.n,order));onOverrides({});setError('');}catch(e){setError((e as Error).message);}}
+ function apply(order:number[]){try{const next=updateSourceOrder(library,c,overrides,order);onLibrary(next.library);onOverrides(next.overrides);setError('');}catch(e){setError((e as Error).message);}}
  function defaults(){onOverrides(Object.fromEntries(plan.rows.filter(r=>r.selected).map(r=>[r.repeat,(r.options.find(m=>m.preferredForRepeat)||r.options[0]).id])));}
  return <section className="architecture-workspace">
  <div className="builder-topline"><div><p className="eyebrow">02 / BUILD YOUR PUF</p><h2>Arrange. Inspect. Refine.</h2></div><Tabs value={level} onValueChange={setLevel}><TabsList aria-label="Experience level"><TabsTrigger value="beginner">Beginner</TabsTrigger><TabsTrigger value="expert">Advanced</TabsTrigger></TabsList></Tabs></div>
  <div className="fixed-window-summary"><span>Selected RNA · {c.start}–{c.end}</span><code>{c.motif}</code><span>{c.n} positions · protein N → C</span></div>
- <Tabs value={phase} onValueChange={setPhase}><TabsList className="builder-phases" aria-label="PUF design stages"><TabsTrigger value="architecture">A · Repeat order</TabsTrigger><TabsTrigger value="trm">B · TRM choices</TabsTrigger><TabsTrigger value="effects">C · TRM assessment</TabsTrigger></TabsList>
+ {level==='expert'?<ExpertDesigner candidate={c} library={library} overrides={overrides} active={pos} onActive={setActive} onOrder={apply} onOverrides={onOverrides} evidence={evidence} onEvidence={onEvidence} rna={rna} error={error}/>:<Tabs value={phase} onValueChange={setPhase}><TabsList className="builder-phases" aria-label="PUF design stages"><TabsTrigger value="architecture">A · Repeat order</TabsTrigger><TabsTrigger value="trm">B · TRM choices</TabsTrigger><TabsTrigger value="effects">C · TRM assessment</TabsTrigger></TabsList>
  {error&&<p role="alert" className="notice error">{error}</p>}
  <div className="position-deck">{plan.rows.map(r=><button key={r.repeat} className={`position-card ${r.repeat===pos?'selected':''}`} aria-pressed={r.repeat===pos} onClick={()=>setActive(r.repeat)}><span>P{r.repeat}</span><strong>R{order[r.repeat-1]}</strong><code>{phase==='architecture'?c.motif[c.n-r.repeat]:r.selected?.trm||'—'}</code>{phase!=='architecture'&&r.selected?.preferredForRepeat&&<i aria-label="Preferred TRM">★</i>}</button>)}</div>
  <TabsContent value="architecture"><div className="panel secondary-panel"><div className="panel-heading"><div><h3>{level==='beginner'?'Start with the reference order':`P${pos} · choose its source repeat`}</h3><p>{level==='beginner'?`${c.n===8||c.n===12?'Reference scaffold':'Exploratory TRM plan'} · ${order.map(r=>'R'+r).join(' / ')}`:`RNA base ${row.base} · position ${c.end-pos+1}`}</p></div><Button variant="outline" disabled={!editable} onClick={()=>apply(defaultOrder(c.n))}><RotateCcw size={15}/>Reset order</Button></div>
@@ -33,5 +34,5 @@ export default function ArchitectureBuilder({candidate:c,library,overrides,onLib
  <div className="builder-actions"><Button onClick={()=>setPhase('effects')}>Inspect TRM effects <ArrowRight size={15}/></Button><Button variant="outline" disabled={!plan.sequence} onClick={()=>saveFile('PUF-designed-protein.fasta',`>PUF_${order.join('-')}\n${plan.sequence}\n`)}><Download size={15}/>Protein FASTA</Button></div></div>
  </TabsContent>
  <TabsContent value="effects"><StructureAssessment key={'trm-'+c.n} protein={plan.sequence} spans={spans} rna={rna} stage="trm" evidence={evidence} onEvidence={onEvidence}/></TabsContent>
- </Tabs></section>;
+ </Tabs>}</section>;
 }
