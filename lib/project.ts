@@ -1,4 +1,5 @@
 import constructs from '../data/constructs.json';
+import {validateStructureEvidence,type StructureResult} from './af3-analysis';
 import {checkStructure} from './structure-input';
 import {analyze,normalizeRNA,parseFasta,validateLibrary,validatePredictions,modulePlan,type ModuleLibrary,type PredictionSet} from './design';
 export type AssayRow={construct:string;site:'C388'|'C295'|'C871';assay:string;replicate:string;editingPercent:number};
@@ -30,7 +31,7 @@ export function validateLab(v:unknown):LabState{
  for(const [id,text] of Object.entries(x.structures||{})){const c=constructs.find(c=>c.id===id);if(!c||typeof text!=='string')throw Error('Unknown saved structure.');size+=text.length;if(size>10000000)throw Error('Saved structures exceed 10 MB.');structures[id]=checkStructure(text,c.sequence);}
  return {assays:validateAssays(x.assays),fusion:x.fusion,notes:x.notes,structures};
 }
-export type ProjectFile={kind:'puf-studio-project';version:1;target:{id:string;sequence:string;position:number};length:number;windowStart:number;referenceName:string;references:{id:string;sequence:string}[];library:ModuleLibrary;predictions:PredictionSet|null;overrides:Record<number,string>;lab:LabState};
+export type ProjectFile={kind:'puf-studio-project';version:1;target:{id:string;sequence:string;position:number};length:number;windowStart:number;referenceName:string;references:{id:string;sequence:string}[];library:ModuleLibrary;predictions:PredictionSet|null;overrides:Record<number,string>;lab:LabState;structureEvidence?:StructureResult[];experience?:'beginner'|'expert'};
 export function restoreProject(input:unknown){
  const p=input as ProjectFile;
  if(!p||p.kind!=='puf-studio-project'||p.version!==1)throw Error('Upload a PUF Studio project, version 1.');
@@ -41,6 +42,8 @@ export function restoreProject(input:unknown){
  const library=validateLibrary(p.library),predictions=p.predictions?validatePredictions(p.predictions):null,lab=validateLab(p.lab);
  const settings={recognitionLength:p.length,mismatch:2};const candidates=analyze(seq,p.target.position,p.target.id,refs,settings);
  const chosen=candidates.find(c=>c.start===p.windowStart);if(!chosen)throw Error('Saved window does not match the target.');
+ if(p.experience!==undefined&&!['beginner','expert'].includes(p.experience))throw Error('Invalid saved experience mode.');
+ if(p.structureEvidence!==undefined)validateStructureEvidence(p.structureEvidence);
  const base=modulePlan(chosen,library);
  for(const [k,v] of Object.entries(p.overrides)){const row=base.rows.find(r=>r.repeat===Number(k));if(typeof v!=='string'||!row?.options.some(m=>m.id===v))throw Error('Saved TRM selection is incompatible with its library.');}
  return {p:{...p,target:{...p.target,sequence:seq},references:refs,library,predictions,lab},candidates,chosen,settings};

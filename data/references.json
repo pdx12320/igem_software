@@ -37,16 +37,6 @@
     "url": "https://doi.org/10.1038/s41467-025-64748-6"
   },
   {
-    "id": "lamar",
-    "authors": "pdx12320.",
-    "year": "n.d.",
-    "title": "PUF_fine_tuning_version1",
-    "type": "software",
-    "descriptor": "[Computer software]",
-    "publisher": "GitHub",
-    "url": "https://github.com/pdx12320/PUF_fine_tuning_version1"
-  },
-  {
     "id": "pdb1m8y",
     "authors": "Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T.",
     "year": "2002a",
@@ -78,5 +68,35 @@
     "volume": "12",
     "locator": "Article 5107",
     "url": "https://doi.org/10.1038/s41467-021-25433-6"
+  },
+  {
+    "id": "puf-architecture",
+    "authors": "pdx12320.",
+    "year": "2026a",
+    "title": "PUF architecture validation",
+    "type": "software",
+    "descriptor": "(Commit 70385e9) [Computer software and data]",
+    "publisher": "GitHub",
+    "url": "https://github.com/pdx12320/PUF_alphafold/tree/70385e9b8cf7e4a01d261312c638ba39d413d5dc/architecture_validation"
+  },
+  {
+    "id": "puf-trm-models",
+    "authors": "pdx12320.",
+    "year": "2026b",
+    "title": "PUF AlphaFold CP analysis: Three-site dynamic-threshold classification",
+    "type": "software",
+    "descriptor": "(Commit 70385e9) [Computer software and data]",
+    "publisher": "GitHub",
+    "url": "https://github.com/pdx12320/PUF_alphafold/tree/70385e9b8cf7e4a01d261312c638ba39d413d5dc/dynamic_classification"
+  },
+  {
+    "id": "lamar",
+    "authors": "pdx12320.",
+    "year": "n.d.",
+    "title": "PUF_fine_tuning_version1",
+    "type": "software",
+    "descriptor": "[Computer software]",
+    "publisher": "GitHub",
+    "url": "https://github.com/pdx12320/PUF_fine_tuning_version1"
   }
 ]

@@ -109,3 +109,16 @@ Reproduce packaging with scripts/prepare-structure.py and the source ZIP path. O
 - Fusion builder assembles the current PUF with user-provided linker and APOBEC in either order, then exports FASTA and one-based domain annotations.
 - LAMAR jobs connects to a user-entered HTTPS service and its real reference catalog, submits targets, refreshes states, resumes by job ID and downloads/imports results. See public/lamar-service-contract.md. No model service or transcriptome is bundled.
 - The structure viewer now links selectable TRM amino acids, the RNA register and the 3D view. Comparison accepts CIF files only after exact chain A protein and chain B RNA validation.
+
+
+## Position/source builder and local structural models
+
+Step 02 now offers Beginner and Advanced modes: assign P1–Pn to source R1–R8, inspect structural evidence with baseline TRMs, select source-specific preferred TRMs, then assess the final sequence. Sources are retained in the project library. Native replacements preserve positional loops and reference caps; source-unchanged cores retain WT non-TRM substitutions. A custom nonmatching scaffold cannot silently be replaced. 9–11R still require full scaffold sequences for assembly.
+
+The Examples navigation contains 31 real three-site constructs and 24 archived architectures from PUF_alphafold commit 70385e9b8cf7e4a01d261312c638ba39d413d5dc. Experimental means, position-group-out / construct-out predictions and locally recomputed training-refit scores are separate. All model disagreements remain visible.
+
+Three passive JSON models run in the browser: C388 interface logistic regression and C871/C295 CCR shallow random forests. Exact CP feature definitions, frozen-model provenance, 519-aa scope, thresholds and APA references are in public/structural-models-methods.md. No work classifier is relabeled as structural stability. New repeat architectures receive structural descriptors only. Uploaded AF3 ZIPs must include paired request/CIF/full_data JSON; sequences, chains, tokens and matrix dimensions are checked. Models require genuine 519-aa AF3 predictions with their original tags; the 492-aa structure is never padded.
+
+Source rows, model metadata and inputs remain versioned. Project JSON stores sequence-bound AF3 evidence. Matching results are included in offline Design Reports; changed designs invalidate stale evidence. Whole-transcriptome LAMAR service requirements remain unchanged.
+
+Validation for this change: 33 design/project/report/model checks pass with `node --test tests/design.test.mjs tests/project.test.mjs tests/report.test.mjs tests/architecture-models.test.mjs`. The original generic starter tests still expect development-preview metadata and unused catalog CSS utilities; these two legacy assertions are not product checks. Full TypeScript checking retains the pre-existing Cloudflare ambient type errors in db/index.ts and worker/index.ts. The production build succeeds.

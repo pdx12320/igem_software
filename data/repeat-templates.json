@@ -1,0 +1,543 @@
+{
+  "version": "puf-source-templates-v1",
+  "coordinateConvention": "Positions and residues are 1-based. P is an N-to-C assembly slot; R is its source repeat. Each repeat core is 36 aa.",
+  "trmCorePositions1": [
+    12,
+    13,
+    16
+  ],
+  "nativeSources": [
+    {
+      "sourceRepeat": 1,
+      "core": "HIMEFSQDQHGSRFIQLKLERATPAERQLVFNEILQ",
+      "trm": "SRQ",
+      "start1": 25,
+      "end1": 60
+    },
+    {
+      "sourceRepeat": 2,
+      "core": "AAYQLMVDVFGNYVIQKFFEFGSLEQKLALAERIRG",
+      "trm": "NYQ",
+      "start1": 61,
+      "end1": 96
+    },
+    {
+      "sourceRepeat": 3,
+      "core": "HVLSLALQMYGCRVIQKALEFIPSDQQNEMVRELDG",
+      "trm": "CRQ",
+      "start1": 97,
+      "end1": 132
+    },
+    {
+      "sourceRepeat": 4,
+      "core": "HVLKCVKDQNGNHVVQKCIECVQPQSLQFIIDAFKG",
+      "trm": "NHQ",
+      "start1": 133,
+      "end1": 168
+    },
+    {
+      "sourceRepeat": 5,
+      "core": "QVFALSTHPYGCRVIQRILEHCLPDQTLPILEELHQ",
+      "trm": "CRQ",
+      "start1": 169,
+      "end1": 204
+    },
+    {
+      "sourceRepeat": 6,
+      "core": "HTEQLVQDQYGNYVIQHVLEHGRPEDKSKIVAEIRG",
+      "trm": "NYQ",
+      "start1": 205,
+      "end1": 240
+    },
+    {
+      "sourceRepeat": 7,
+      "core": "NVLVLSQHKFASNVVEKCVTHASRTERAVLIDEVCT",
+      "trm": "SNE",
+      "start1": 241,
+      "end1": 276
+    },
+    {
+      "sourceRepeat": 8,
+      "core": "ALYTMMKDQYANYVVQKMIDVAEPGQRKIVMHKIRP",
+      "trm": "NYQ",
+      "start1": 284,
+      "end1": 319
+    }
+  ],
+  "references": [
+    {
+      "id": "PUM1-1M8Y-8R",
+      "repeats": 8,
+      "ncap": "GRSRLLEDFRNNRYPNLQLREIAG",
+      "ccap": "HIATLRKYTYGKHILAKLEKYYMKNGVDLG",
+      "length": 349,
+      "sequenceSha256": "2e23dd459851abe80d9de72af8a0ff6726b3b098f88ea4a1a927321ded289b83",
+      "sourceOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "starts1": [
+        25,
+        61,
+        97,
+        133,
+        169,
+        205,
+        241,
+        284
+      ],
+      "slots": [
+        {
+          "position": 1,
+          "sourceRepeat": 1,
+          "core": "HIMEFSQDQHGSRFIQLKLERATPAERQLVFNEILQ",
+          "suffix": "",
+          "start1": 25,
+          "coreEnd1": 60,
+          "end1": 60,
+          "trmPositions1": [
+            36,
+            37,
+            40
+          ],
+          "trm": "SRQ",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 2,
+          "sourceRepeat": 2,
+          "core": "AAYQLMVDVFGNYVIQKFFEFGSLEQKLALAERIRG",
+          "suffix": "",
+          "start1": 61,
+          "coreEnd1": 96,
+          "end1": 96,
+          "trmPositions1": [
+            72,
+            73,
+            76
+          ],
+          "trm": "NYQ",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 3,
+          "sourceRepeat": 3,
+          "core": "HVLSLALQMYGCRVIQKALEFIPSDQQNEMVRELDG",
+          "suffix": "",
+          "start1": 97,
+          "coreEnd1": 132,
+          "end1": 132,
+          "trmPositions1": [
+            108,
+            109,
+            112
+          ],
+          "trm": "CRQ",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 4,
+          "sourceRepeat": 4,
+          "core": "HVLKCVKDQNGNHVVQKCIECVQPQSLQFIIDAFKG",
+          "suffix": "",
+          "start1": 133,
+          "coreEnd1": 168,
+          "end1": 168,
+          "trmPositions1": [
+            144,
+            145,
+            148
+          ],
+          "trm": "NHQ",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 5,
+          "sourceRepeat": 5,
+          "core": "QVFALSTHPYGCRVIQRILEHCLPDQTLPILEELHQ",
+          "suffix": "",
+          "start1": 169,
+          "coreEnd1": 204,
+          "end1": 204,
+          "trmPositions1": [
+            180,
+            181,
+            184
+          ],
+          "trm": "CRQ",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 6,
+          "sourceRepeat": 6,
+          "core": "HTEQLVQDQYGNYVIQHVLEHGRPEDKSKIVAEIRG",
+          "suffix": "",
+          "start1": 205,
+          "coreEnd1": 240,
+          "end1": 240,
+          "trmPositions1": [
+            216,
+            217,
+            220
+          ],
+          "trm": "NYQ",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 7,
+          "sourceRepeat": 7,
+          "core": "NVLVLSQHKFASNVVEKCVTHASRTERAVLIDEVCT",
+          "suffix": "MNDGPHS",
+          "start1": 241,
+          "coreEnd1": 276,
+          "end1": 283,
+          "trmPositions1": [
+            252,
+            253,
+            256
+          ],
+          "trm": "SNE",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 8,
+          "sourceRepeat": 8,
+          "core": "ALYTMMKDQYANYVVQKMIDVAEPGQRKIVMHKIRP",
+          "suffix": "",
+          "start1": 284,
+          "coreEnd1": 319,
+          "end1": 319,
+          "trmPositions1": [
+            295,
+            296,
+            299
+          ],
+          "trm": "NYQ",
+          "nonTrmDifferencesFromNative": []
+        }
+      ],
+      "provenance": "https://www.rcsb.org/fasta/entry/1M8Y/display"
+    },
+    {
+      "id": "PUF12-9_WT",
+      "repeats": 12,
+      "ncap": "GRSRLLEDFRNNRYPNLQLREIAG",
+      "ccap": "HIATLRKYTYGKHILAKLEKYYMKNGVDL",
+      "length": 492,
+      "sequenceSha256": "2b981a33277b03de9a6542f27baf6c56626ec3f21c774f017cb5880ac05b32f9",
+      "sourceOrder": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        5,
+        6,
+        7,
+        6,
+        7,
+        8
+      ],
+      "starts1": [
+        25,
+        61,
+        97,
+        133,
+        169,
+        205,
+        241,
+        277,
+        313,
+        349,
+        385,
+        428
+      ],
+      "slots": [
+        {
+          "position": 1,
+          "sourceRepeat": 1,
+          "core": "HIMEFSQDQHGSYFIELKLERATPAERQLVFNEILQ",
+          "suffix": "",
+          "start1": 25,
+          "coreEnd1": 60,
+          "end1": 60,
+          "trmPositions1": [
+            36,
+            37,
+            40
+          ],
+          "trm": "SYE",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 2,
+          "sourceRepeat": 2,
+          "core": "AAYQLMVDVFGSYVIRKFFEFGSLEQKLALAERIRG",
+          "suffix": "",
+          "start1": 61,
+          "coreEnd1": 96,
+          "end1": 96,
+          "trmPositions1": [
+            72,
+            73,
+            76
+          ],
+          "trm": "SYR",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 3,
+          "sourceRepeat": 3,
+          "core": "HVLSLALQMYGCRVIQKALEFIPSDQQNEMVRELDG",
+          "suffix": "",
+          "start1": 97,
+          "coreEnd1": 132,
+          "end1": 132,
+          "trmPositions1": [
+            108,
+            109,
+            112
+          ],
+          "trm": "CRQ",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 4,
+          "sourceRepeat": 5,
+          "core": "QVFALSTHPYGSYVIERILEHCLPDQTLPILEELHQ",
+          "suffix": "",
+          "start1": 133,
+          "coreEnd1": 168,
+          "end1": 168,
+          "trmPositions1": [
+            144,
+            145,
+            148
+          ],
+          "trm": "SYE",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 5,
+          "sourceRepeat": 6,
+          "core": "HTEQLVQDQYGSYVIEHVLEHGRPEDKSKIVAEIRG",
+          "suffix": "",
+          "start1": 169,
+          "coreEnd1": 204,
+          "end1": 204,
+          "trmPositions1": [
+            180,
+            181,
+            184
+          ],
+          "trm": "SYE",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 6,
+          "sourceRepeat": 7,
+          "core": "NVLVLSQHKFACRVVQKCVTHASRTERAVLIDELDG",
+          "suffix": "",
+          "start1": 205,
+          "coreEnd1": 240,
+          "end1": 240,
+          "trmPositions1": [
+            216,
+            217,
+            220
+          ],
+          "trm": "CRQ",
+          "nonTrmDifferencesFromNative": [
+            {
+              "corePosition1": 34,
+              "proteinPosition1": 238,
+              "native": "V",
+              "reference": "L"
+            },
+            {
+              "corePosition1": 35,
+              "proteinPosition1": 239,
+              "native": "C",
+              "reference": "D"
+            },
+            {
+              "corePosition1": 36,
+              "proteinPosition1": 240,
+              "native": "T",
+              "reference": "G"
+            }
+          ]
+        },
+        {
+          "position": 7,
+          "sourceRepeat": 5,
+          "core": "QVFALSTHPYGSYVIERILEHCLPDQTLPILEELHQ",
+          "suffix": "",
+          "start1": 241,
+          "coreEnd1": 276,
+          "end1": 276,
+          "trmPositions1": [
+            252,
+            253,
+            256
+          ],
+          "trm": "SYE",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 8,
+          "sourceRepeat": 6,
+          "core": "HTEQLVQDQYGSYVIEHVLEHGRPEDKSKIVAEIRG",
+          "suffix": "",
+          "start1": 277,
+          "coreEnd1": 312,
+          "end1": 312,
+          "trmPositions1": [
+            288,
+            289,
+            292
+          ],
+          "trm": "SYE",
+          "nonTrmDifferencesFromNative": []
+        },
+        {
+          "position": 9,
+          "sourceRepeat": 7,
+          "core": "NVLVLSQHKFANYVVQKCVTHASRTERAVLIDKIRP",
+          "suffix": "",
+          "start1": 313,
+          "coreEnd1": 348,
+          "end1": 348,
+          "trmPositions1": [
+            324,
+            325,
+            328
+          ],
+          "trm": "NYQ",
+          "nonTrmDifferencesFromNative": [
+            {
+              "corePosition1": 33,
+              "proteinPosition1": 345,
+              "native": "E",
+              "reference": "K"
+            },
+            {
+              "corePosition1": 34,
+              "proteinPosition1": 346,
+              "native": "V",
+              "reference": "I"
+            },
+            {
+              "corePosition1": 35,
+              "proteinPosition1": 347,
+              "native": "C",
+              "reference": "R"
+            },
+            {
+              "corePosition1": 36,
+              "proteinPosition1": 348,
+              "native": "T",
+              "reference": "P"
+            }
+          ]
+        },
+        {
+          "position": 10,
+          "sourceRepeat": 6,
+          "core": "HTEQLVQDQYGCRVVQHVLEHGRPEDKSKIVAEIRG",
+          "suffix": "",
+          "start1": 349,
+          "coreEnd1": 384,
+          "end1": 384,
+          "trmPositions1": [
+            360,
+            361,
+            364
+          ],
+          "trm": "CRQ",
+          "nonTrmDifferencesFromNative": [
+            {
+              "corePosition1": 15,
+              "proteinPosition1": 363,
+              "native": "I",
+              "reference": "V"
+            }
+          ]
+        },
+        {
+          "position": 11,
+          "sourceRepeat": 7,
+          "core": "NVLVLSQHKFASYVIRKCVTHASRTERAVLIDEVCT",
+          "suffix": "MNDGPHS",
+          "start1": 385,
+          "coreEnd1": 420,
+          "end1": 427,
+          "trmPositions1": [
+            396,
+            397,
+            400
+          ],
+          "trm": "SYR",
+          "nonTrmDifferencesFromNative": [
+            {
+              "corePosition1": 15,
+              "proteinPosition1": 399,
+              "native": "V",
+              "reference": "I"
+            }
+          ]
+        },
+        {
+          "position": 12,
+          "sourceRepeat": 8,
+          "core": "ALYTMMKDQYACRVVQKMIDVAEPGQRKIVMHKIRP",
+          "suffix": "",
+          "start1": 428,
+          "coreEnd1": 463,
+          "end1": 463,
+          "trmPositions1": [
+            439,
+            440,
+            443
+          ],
+          "trm": "CRQ",
+          "nonTrmDifferencesFromNative": []
+        }
+      ],
+      "provenance": "User FASTA: 00_PUF12-9_WT"
+    }
+  ],
+  "assemblyPolicy": {
+    "defaultReference12": "PUF12-9_WT",
+    "unchangedSource": "Reuse the exact reference slot core, retaining engineered non-TRM residues and reference TRM.",
+    "changedSource": "Use the exact 36-aa native core for the newly selected source R; retain the reference slot suffix. Subsequent TRM selection changes only core positions 12,13,16.",
+    "suffix": {
+      "sequence": "MNDGPHS",
+      "length": 7,
+      "location": "After the penultimate slot core and before the final slot core",
+      "status": "Present in both supplied reference assemblies. Retaining this position in new source permutations is an engineering convention, not experimental validation."
+    },
+    "caps": "Use each selected reference\u2019s exact N/C caps. The 8R reference has one extra terminal G versus the 12R reference.",
+    "customArchitectureEvidence": "Any source swap creates a designed construct. TRM transfer evidence does not establish that every repeat permutation is functional or structurally stable.",
+    "lengths9to11": "No matching complete scaffold supplied in these inputs. Native-core concatenation can produce explicitly hypothetical constructs with declared caps and junction convention, but cannot be labeled a validated or supplied scaffold. Prefer keeping a custom-scaffold requirement until concrete reference sequences are available.",
+    "structureValidity": "Any resulting amino-acid sequence change invalidates prior structure/model scores for that sequence. Reverting exactly to a scored sequence may reuse its matching result."
+  },
+  "provenance": {
+    "nativeReference": "https://www.rcsb.org/fasta/entry/1M8Y/display",
+    "nativeResidueRangeNote": "Reference PUM1 protein sequence already stored and used in existing site build script; no new sequence retrieval performed.",
+    "reference12File": "public/puf12-input.fasta",
+    "reference12Record": "00_PUF12-9_WT",
+    "reference12FileSha256": "a73b194e1ed57aa71351261bd4ddd80dac360bc06df97da2a6728ec0673edb52",
+    "ancestry": "Native source assignment for WT12 is inferred from sequence homology.",
+    "trmMatrix": "https://doi.org/10.1038/s41467-021-25433-6",
+    "trmFigure": 4,
+    "builder": "scripts/build-puf-library.py"
+  }
+}

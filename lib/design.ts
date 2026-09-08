@@ -5,9 +5,9 @@ export type Candidate = { id: string; n: number; offset: number; start: number; 
 export type Settings = { recognitionLength: number; mismatch: number };
 export type TrmCode = { id: string; base: string; trm: string; nativeRepeats: number[]; evidence: string };
 export type TransferPolicy = { targetRepeatLengths: number[]; status: string; evidence: string; rule: string; defaultSelection: string };
-export type Module = { id: string; repeat: number; base: string; trm: string; sequence: string; evidence: string; nativeRepeat?: number; nativeRepeats?: number[]; preferredForRepeat?: boolean; transfer?: boolean; preference?: Record<string, number> };
-export type Scaffold = { id: string; repeats: number; ncap: string; ccap: string; evidence: string; modules: Module[] };
-export type ModuleLibrary = { version: string; scaffolds: Scaffold[]; trmOptions?: TrmCode[]; transferPolicy?: TransferPolicy };
+export type Module = { id: string; repeat: number; base: string; trm: string; sequence: string; evidence: string; nativeRepeat?: number; sourceRepeat?: number; nativeRepeats?: number[]; preferredForRepeat?: boolean; transfer?: boolean; preference?: Record<string, number> };
+export type Scaffold = { id: string; repeats: number; ncap: string; ccap: string; evidence: string; modules: Module[]; repeatSources?: number[]; architectureLabel?: string; repeatMap?: {repeat:number; nativeRepeat:number; start1:number; end1:number; sequence:string}[] };
+export type ModuleLibrary = { version: string; scaffolds: Scaffold[]; sourceOrders?: Record<string,number[]>; trmOptions?: TrmCode[]; transferPolicy?: TransferPolicy };
 export type PredictionSet = { modelVersion: string; referenceSet: string; scoreType: 'ranking_score'; predictions: { context: string; score: number }[] };
 export const BASES = ['A','C','G','U'];
 const DEMO_RAW = ('AUGGCUACGUAUCCAGUAAGCUAGGUACCGUAACGUUGACUAGUCCAUGGUACGACUUGUACAUAGCUACGAUGCAU').slice(0,75) + 'C' + ('AGUCAGGUAUACGUUGAUGCUAACGGUACCAUGGCUAGUCAUAGGCUACUGAUCUGAACGUAGCUAGUCAGGCUAA').slice(0,75);
@@ -73,6 +73,7 @@ export function validateLibrary(x:ModuleLibrary):ModuleLibrary {
     const tids=new Set<string>();
     for(const t of x.trmOptions){if(!t.id||tids.has(t.id)||!BASES.includes(t.base)||!t.trm||t.trm.length!==3||!aa.test(t.trm)||!t.evidence||!Array.isArray(t.nativeRepeats)||!t.nativeRepeats.length||t.nativeRepeats.some(n=>!Number.isInteger(n)||n<1||n>8))throw new Error('Invalid shared TRM code or native matrix source.');tids.add(t.id);}
   }
+  if(x.sourceOrders)for(const [n,order] of Object.entries(x.sourceOrders)){if(!Number.isInteger(Number(n))||Number(n)<8||Number(n)>12||!Array.isArray(order)||order.length!==Number(n)||order.some(v=>!Number.isInteger(v)||v<1||v>8))throw Error('Invalid source repeat order.');}
   const ids=new Set<string>();
   for(const s of x.scaffolds){
     if(!s.id||ids.has(s.id)||!Number.isInteger(s.repeats)||s.repeats<8||s.repeats>12||!s.evidence||typeof s.ncap!=='string'||typeof s.ccap!=='string'||!aa.test(s.ncap)||!aa.test(s.ccap)||!Array.isArray(s.modules)||!s.modules.length)throw new Error('Invalid scaffold: unique id, 8–12 repeats, caps, evidence and modules are required.');
@@ -85,10 +86,10 @@ export function modulePlan(c:Candidate,lib:ModuleLibrary|null,overrides:Record<n
   const scaffold=lib?.scaffolds.find(s=>s.repeats===c.n); const rows=Array.from({length:c.n},(_,i)=>{
     const repeat=i+1,base=c.motif[c.n-1-i];
     const shared=lib?.transferPolicy?.targetRepeatLengths.includes(c.n)?lib.trmOptions||[]:[];
-    const options:Module[]=scaffold?scaffold.modules.filter(m=>m.repeat===repeat&&m.base===base):shared.filter(m=>m.base===base).map(m=>({...m,id:`TRM-R${repeat}-${m.id}`,repeat,sequence:'',nativeRepeat:m.nativeRepeats[0],transfer:true}));
+    const options:Module[]=scaffold?scaffold.modules.filter(m=>m.repeat===repeat&&m.base===base):shared.filter(m=>m.base===base).map(m=>({...m,id:`TRM-R${repeat}-${m.id}`,repeat,sequence:'',nativeRepeat:lib?.sourceOrders?.[c.n]?.[i]||m.nativeRepeats[0],sourceRepeat:lib?.sourceOrders?.[c.n]?.[i],preferredForRepeat:!!lib?.sourceOrders?.[c.n]&&m.nativeRepeats.includes(lib.sourceOrders[c.n][i]),transfer:true}));
     const assess=(m:Module)=>{if(!m.preference)return null;const alternatives=c.hits.map(h=>h.sequence[c.n-1-i]).filter(b=>b!==base);const worst=Math.max(0,...alternatives.map(b=>m.preference![b]));return m.preference[base]-worst;};
     const sortable=options.every(m=>!!m.preference);const sorted=optimize&&sortable?[...options].sort((a,b)=>assess(b)!-assess(a)!):options;
-    const selected=options.find(m=>m.id===overrides[repeat])||sorted[0]||null;
+    const selected=options.find(m=>m.id===overrides[repeat])||(scaffold?sorted[0]:sorted.find(m=>m.preferredForRepeat)||sorted[0])||null;
     return {repeat,base,options,selected,margin:selected?assess(selected):null};
   });
   const ready=!!scaffold&&rows.every(r=>r.selected);

@@ -1,0 +1,121 @@
+{
+  "repository": "pdx12320/PUF_alphafold",
+  "commit": "70385e9b8cf7e4a01d261312c638ba39d413d5dc",
+  "files": [
+    {
+      "path": "architecture_validation/construct_features.csv",
+      "gitBlobSHA": "bfe56cee21eed2e4af58f8a44d403346403c508d",
+      "size": 36792
+    },
+    {
+      "path": "architecture_validation/extract.py",
+      "gitBlobSHA": "565a77bf38053ee08f04ae21fe1777a7a3f7073a",
+      "size": 6466
+    },
+    {
+      "path": "architecture_validation/main_features.csv",
+      "gitBlobSHA": "ffaca820a8bc9ba0ddb10d5f9a473e1309803004",
+      "size": 63012
+    },
+    {
+      "path": "c388_analysis/cp_features.py",
+      "gitBlobSHA": "c98d52407d2a545efdb3f0a02cfdb41d22ee2366",
+      "size": 1005
+    },
+    {
+      "path": "c388_analysis/experimental_rows.json",
+      "gitBlobSHA": "d8e8a869097b38e3a727cc24464ffb219f862fda",
+      "size": 11943
+    },
+    {
+      "path": "c388_analysis/inventory.json",
+      "gitBlobSHA": "7223b7d67ff2f6cf940bfb54abd803582d70823e",
+      "size": 82906
+    },
+    {
+      "path": "c388_analysis/logistic_scoring_coefficients.csv",
+      "gitBlobSHA": "7352968a91a0b4eb71374d9ff214d76992aeab6b",
+      "size": 1454
+    },
+    {
+      "path": "c388_analysis/sequence_mapping.csv",
+      "gitBlobSHA": "2afd81d1d9e8fe9fc41b62236e3e7cd027b33524",
+      "size": 5079
+    },
+    {
+      "path": "dynamic_classification/README.md",
+      "gitBlobSHA": "3f37fb848f8db6de5ebfed2fb0d6e7bfd4f92ddf",
+      "size": 3976
+    },
+    {
+      "path": "dynamic_classification/classify.py",
+      "gitBlobSHA": "78a68a3bd2688f3d09dfb22ed43d07668db57334",
+      "size": 7995
+    },
+    {
+      "path": "dynamic_classification/extract.py",
+      "gitBlobSHA": "870a7a29fc3753c786a1273880e1668bd10ca759",
+      "size": 3468
+    },
+    {
+      "path": "dynamic_classification/inputs/construct_site_summary.csv",
+      "gitBlobSHA": "8dfd8aeb40c9c36f07526cd3dde9229602721dc1",
+      "size": 14133
+    },
+    {
+      "path": "dynamic_classification/inputs/experimental_replicates.csv",
+      "gitBlobSHA": "0b1fac4c2b9c0e84cb05ae06afc411d6081da25b",
+      "size": 3164
+    },
+    {
+      "path": "dynamic_classification/inputs/pr_by_seed.npz",
+      "gitBlobSHA": "e5f781d15b8405329d5aaffadf90f2093d2a94eb",
+      "size": 106492
+    },
+    {
+      "path": "dynamic_classification/inputs/repository_features.csv",
+      "gitBlobSHA": "cd22385760001892751ba205d8b15284978b4cba",
+      "size": 27250
+    },
+    {
+      "path": "dynamic_classification/results/candidate_feature_weights_exploratory.csv",
+      "gitBlobSHA": "fad8e0427b7b3ee94468784b91f07553b9b9bd5c",
+      "size": 4903
+    },
+    {
+      "path": "dynamic_classification/results/candidate_models.joblib",
+      "gitBlobSHA": "4f098ee3e48acb3161e5d8329ebe21272d925822",
+      "size": 30299
+    },
+    {
+      "path": "dynamic_classification/results/exploratory_candidates.csv",
+      "gitBlobSHA": "ed34d684d0f0e70545aba4dd1bb4fbbb4a4556df",
+      "size": 634
+    },
+    {
+      "path": "dynamic_classification/results/training_only_score_threshold_validation.csv",
+      "gitBlobSHA": "f410d128bcb3fe13a14d60de8c1cf45ed6bfd7cc",
+      "size": 1273
+    },
+    {
+      "path": "dynamic_classification/results/validated_predictions.csv",
+      "gitBlobSHA": "ff437b9228828c91ec7a7d68d3f8e9352ef8f5e1",
+      "size": 18704
+    },
+    {
+      "path": "dynamic_classification/sources/menghaowei/ContactSeek/ContactSeek/ContactExtraction.py",
+      "gitBlobSHA": "460c9afe03f4dc40f4b0e08d0424c3becdd937e5",
+      "size": 19579
+    },
+    {
+      "path": "dynamic_classification/versions.json",
+      "gitBlobSHA": "31ccff9999091e13679882362fbc33d1968cfc89",
+      "size": 88
+    },
+    {
+      "path": "extended/score_new.py",
+      "gitBlobSHA": "7d0a02e2ceefa288021a90960143353cb19e54b6",
+      "size": 4419
+    }
+  ]
+}
