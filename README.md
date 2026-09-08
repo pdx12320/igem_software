@@ -91,3 +91,11 @@ Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T. (2002a). *Crystal struc
 Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T. (2002b). Modular recognition of RNA by a human Pumilio-homology domain. *Cell, 110*(4), 501–512. [https://doi.org/10.1016/S0092-8674(02)00873-5](https://doi.org/10.1016/S0092-8674(02)00873-5)
 
 Zhou, W., Melamed, D., Banyai, G., Meyer, C., Tuschl, T., Wickens, M., Cao, J., & Fields, S. (2021). Expanding the binding specificity for RNA recognition by a PUF domain. *Nature Communications, 12*, Article 5107. [https://doi.org/10.1038/s41467-021-25433-6](https://doi.org/10.1038/s41467-021-25433-6)
+
+## AF3 structure showcase
+
+The Overview includes a coordinate-backed 3Dmol.js viewer for the uploaded WT PUF12-9–C388 complex: chain A is the exact 492-aa WT scaffold, chain B is ACAUGGAGGACGUGC. The fixed structure remains independent of draft TRM designs. Select a nucleotide or protein repeat to highlight its assigned TRMs; switch between repeat and per-atom pLDDT colors, toggle side chains, reset the camera, or download the CIF. Arrow keys rotate and +/- zoom when the viewer has keyboard focus.
+
+Model 0 is used by its AF3 ranking, with ipTM 0.91 and pTM 0.89. Five models from the same seed have ipTM 0.90–0.91. The audit records mean atom pLDDT, exact residue mapping, minimum TRM–RNA heavy-atom distances, and source ZIP checksum. The designed antiparallel register is explicit; geometry and confidence do not estimate editing efficiency.
+
+Reproduce packaging with scripts/prepare-structure.py and the source ZIP path. Only the selected CIF, input, compact audit and output terms are bundled. Source MSA/template files are not required at runtime. The viewer is served locally from public/vendor; see its BSD license and bundled notices. AF3 output retains its separate terms in public/structures/alphafold-output-terms.md.

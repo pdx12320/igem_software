@@ -1,0 +1,241 @@
+{
+  "name": "WT_PUF12-9_C388",
+  "protein": "GRSRLLEDFRNNRYPNLQLREIAGHIMEFSQDQHGSYFIELKLERATPAERQLVFNEILQAAYQLMVDVFGSYVIRKFFEFGSLEQKLALAERIRGHVLSLALQMYGCRVIQKALEFIPSDQQNEMVRELDGQVFALSTHPYGSYVIERILEHCLPDQTLPILEELHQHTEQLVQDQYGSYVIEHVLEHGRPEDKSKIVAEIRGNVLVLSQHKFACRVVQKCVTHASRTERAVLIDELDGQVFALSTHPYGSYVIERILEHCLPDQTLPILEELHQHTEQLVQDQYGSYVIEHVLEHGRPEDKSKIVAEIRGNVLVLSQHKFANYVVQKCVTHASRTERAVLIDKIRPHTEQLVQDQYGCRVVQHVLEHGRPEDKSKIVAEIRGNVLVLSQHKFASYVIRKCVTHASRTERAVLIDEVCTMNDGPHSALYTMMKDQYACRVVQKMIDVAEPGQRKIVMHKIRPHIATLRKYTYGKHILAKLEKYYMKNGVDL",
+  "rna": "ACAUGGAGGACGUGC",
+  "proteinChain": "A",
+  "rnaChain": "B",
+  "targetRnaPosition": 15,
+  "targetTranscriptPosition": 388,
+  "bindingInterval": [
+    1,
+    12
+  ],
+  "selectedModel": 0,
+  "seed": [
+    "1299435719"
+  ],
+  "sourceZipSha256": "adaaa11272e85447c46343c3499941678d485357b6047f76e6e3e49659ad4d2c",
+  "models": [
+    {
+      "model": 0,
+      "iptm": 0.91,
+      "ptm": 0.89,
+      "ranking_score": 0.91,
+      "has_clash": 0.0,
+      "proteinMeanAtomPlddt": 93.51,
+      "rnaMeanAtomPlddt": 90.79,
+      "targetMeanAtomPlddt": 80.4
+    },
+    {
+      "model": 1,
+      "iptm": 0.91,
+      "ptm": 0.88,
+      "ranking_score": 0.9,
+      "has_clash": 0.0,
+      "proteinMeanAtomPlddt": 93.43,
+      "rnaMeanAtomPlddt": 90.83,
+      "targetMeanAtomPlddt": 81.25
+    },
+    {
+      "model": 2,
+      "iptm": 0.91,
+      "ptm": 0.88,
+      "ranking_score": 0.9,
+      "has_clash": 0.0,
+      "proteinMeanAtomPlddt": 93.51,
+      "rnaMeanAtomPlddt": 91.11,
+      "targetMeanAtomPlddt": 80.48
+    },
+    {
+      "model": 3,
+      "iptm": 0.9,
+      "ptm": 0.88,
+      "ranking_score": 0.9,
+      "has_clash": 0.0,
+      "proteinMeanAtomPlddt": 93.37,
+      "rnaMeanAtomPlddt": 89.74,
+      "targetMeanAtomPlddt": 77.61
+    },
+    {
+      "model": 4,
+      "iptm": 0.9,
+      "ptm": 0.88,
+      "ranking_score": 0.9,
+      "has_clash": 0.0,
+      "proteinMeanAtomPlddt": 93.43,
+      "rnaMeanAtomPlddt": 89.82,
+      "targetMeanAtomPlddt": 77.25
+    }
+  ],
+  "repeats": [
+    {
+      "repeat": 1,
+      "start1": 25,
+      "end1": 60,
+      "trmPositions1": [
+        36,
+        37,
+        40
+      ],
+      "wtTrm": "SYE",
+      "rnaPosition": 12,
+      "base": "G",
+      "minTrmRnaDistance": 2.66
+    },
+    {
+      "repeat": 2,
+      "start1": 61,
+      "end1": 96,
+      "trmPositions1": [
+        72,
+        73,
+        76
+      ],
+      "wtTrm": "SYR",
+      "rnaPosition": 11,
+      "base": "C",
+      "minTrmRnaDistance": 2.4
+    },
+    {
+      "repeat": 3,
+      "start1": 97,
+      "end1": 132,
+      "trmPositions1": [
+        108,
+        109,
+        112
+      ],
+      "wtTrm": "CRQ",
+      "rnaPosition": 10,
+      "base": "A",
+      "minTrmRnaDistance": 2.71
+    },
+    {
+      "repeat": 4,
+      "start1": 133,
+      "end1": 168,
+      "trmPositions1": [
+        144,
+        145,
+        148
+      ],
+      "wtTrm": "SYE",
+      "rnaPosition": 9,
+      "base": "G",
+      "minTrmRnaDistance": 2.7
+    },
+    {
+      "repeat": 5,
+      "start1": 169,
+      "end1": 204,
+      "trmPositions1": [
+        180,
+        181,
+        184
+      ],
+      "wtTrm": "SYE",
+      "rnaPosition": 8,
+      "base": "G",
+      "minTrmRnaDistance": 2.57
+    },
+    {
+      "repeat": 6,
+      "start1": 205,
+      "end1": 240,
+      "trmPositions1": [
+        216,
+        217,
+        220
+      ],
+      "wtTrm": "CRQ",
+      "rnaPosition": 7,
+      "base": "A",
+      "minTrmRnaDistance": 3.16
+    },
+    {
+      "repeat": 7,
+      "start1": 241,
+      "end1": 276,
+      "trmPositions1": [
+        252,
+        253,
+        256
+      ],
+      "wtTrm": "SYE",
+      "rnaPosition": 6,
+      "base": "G",
+      "minTrmRnaDistance": 2.44
+    },
+    {
+      "repeat": 8,
+      "start1": 277,
+      "end1": 312,
+      "trmPositions1": [
+        288,
+        289,
+        292
+      ],
+      "wtTrm": "SYE",
+      "rnaPosition": 5,
+      "base": "G",
+      "minTrmRnaDistance": 2.47
+    },
+    {
+      "repeat": 9,
+      "start1": 313,
+      "end1": 348,
+      "trmPositions1": [
+        324,
+        325,
+        328
+      ],
+      "wtTrm": "NYQ",
+      "rnaPosition": 4,
+      "base": "U",
+      "minTrmRnaDistance": 3.02
+    },
+    {
+      "repeat": 10,
+      "start1": 349,
+      "end1": 384,
+      "trmPositions1": [
+        360,
+        361,
+        364
+      ],
+      "wtTrm": "CRQ",
+      "rnaPosition": 3,
+      "base": "A",
+      "minTrmRnaDistance": 2.86
+    },
+    {
+      "repeat": 11,
+      "start1": 385,
+      "end1": 427,
+      "trmPositions1": [
+        396,
+        397,
+        400
+      ],
+      "wtTrm": "SYR",
+      "rnaPosition": 2,
+      "base": "C",
+      "minTrmRnaDistance": 2.5
+    },
+    {
+      "repeat": 12,
+      "start1": 428,
+      "end1": 463,
+      "trmPositions1": [
+        439,
+        440,
+        443
+      ],
+      "wtTrm": "CRQ",
+      "rnaPosition": 1,
+      "base": "A",
+      "minTrmRnaDistance": 3.67
+    }
+  ],
+  "mappingNote": "RNA positions are assigned by the designed antiparallel register; distances are geometric minima, not binding or editing probabilities."
+}

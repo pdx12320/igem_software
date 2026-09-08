@@ -1,5 +1,14 @@
 [
   {
+    "id": "3dmol",
+    "authors": "3Dmol.js.",
+    "year": "n.d.",
+    "title": "3Dmol.js",
+    "type": "software",
+    "descriptor": "[Computer software]",
+    "url": "https://3dmol.org/"
+  },
+  {
     "id": "gencode",
     "authors": "GENCODE.",
     "year": "n.d.",
@@ -7,6 +16,14 @@
     "type": "web",
     "retrieval": "Retrieved September 2, 2026, from",
     "url": "https://www.gencodegenes.org/human/"
+  },
+  {
+    "id": "afserver",
+    "authors": "Google DeepMind.",
+    "year": "n.d.",
+    "title": "AlphaFold Server guides",
+    "type": "web",
+    "url": "https://alphafoldserver.com/guides"
   },
   {
     "id": "han2025",
@@ -48,7 +65,7 @@
     "journal": "Cell",
     "volume": "110",
     "issue": "4",
-    "locator": "501–512",
+    "locator": "501\u2013512",
     "url": "https://doi.org/10.1016/S0092-8674(02)00873-5"
   },
   {
