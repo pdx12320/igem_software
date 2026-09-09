@@ -45,7 +45,7 @@ export default function StructureShowcase({modelUrl='/structures/wt-puf12-c388.c
   const controller=new AbortController();setReady(false);setError('');
   Promise.all([loadViewer(),fetch(modelUrl,{signal:controller.signal}).then(r=>{if(!r.ok)throw new Error('Structure could not load.');return r.text();})]).then(([mol,cif])=>{
    if(cancelled||!host.current)return;
-   instance=mol.createViewer(host.current,{backgroundColor:'#102d42',antialias:true});
+   instance=mol.createViewer(host.current,{backgroundColor:'#19143D',antialias:true});
    if(!instance)throw new Error('WebGL is unavailable in this browser.');
    viewer.current=instance;instance.addModel(cif,'cif');
    instance.setStyle({chain:'A'},{cartoon:{color:'#72c5c0'}});
