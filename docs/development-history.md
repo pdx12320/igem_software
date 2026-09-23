@@ -1,0 +1,122 @@
+# Technical notes and development history
+
+This document preserves the detailed notes from earlier releases. References to the former Overview structure viewer and older landing-page layouts are historical; see the [current README](../README.md) for the current interface and entry points. Scientific scope and versioned evidence remain documented below.
+
+## Workflow
+
+1. **Choose a window:** paste RNA/DNA or one FASTA record, enter a 1-based target C coordinate, and choose an 8–12 nt recognition window. The target lies at binding end +2–5 nt.
+2. **Design TRMs:** select one TRM per repeat. R1 recognizes the RNA motif’s 3′ base. Gold ★ preference chips are visible in each repeat row and can be selected directly. They mark native-matrix support for that repeat and RNA base. The selector retains all published candidates.
+3. **LAMAR off-targets:** inspect similar sequences and all downstream C sites at +2–5. Import actual LAMAR ranking scores for their 101-nt C-centered RNA contexts.
+4. **Review & export:** download a standalone **Design Report.html**, print it to PDF, or export complete JSON, PUF FASTA and hit TSV.
+
+The readable report contains the target/window diagram, selected TRMs with preference stars, full PUF protein when available, similar binding windows, local bystanders and scored background C sites. JSON retains the full analyzed data. Report HTML escapes user-supplied text and works offline.
+
+## Implemented and pending
+
+- Local reference search: ≤2 substitutions, RNA orientation, up to 25,000 nt of supplied reference and a bounded hit count.
+- Built-in native 8R matrix and shared candidate codes for 8–12R. The project team confirmed experimental feasibility of this transfer scheme.
+- 8R PUM1 reference scaffold: 349 aa. User-provided 12R scaffold: 492 aa; caps and all non-TRM residues are preserved.
+- 9–11R TRM plans are available. Full protein assembly and repeat-specific stars require their matching scaffold/mapping.
+- **LAMAR weights, GPU inference and the indexed whole-transcriptome backend are not connected yet.** The current integration imports model scores; no model results or binding/editing probabilities are fabricated.
+- Example data are explicitly synthetic. Missing scores stay unavailable.
+
+Scientific details, assumptions, matrix provenance and references are collected under **Methods & evidence** in the app and [implementation-handoff.md](../public/implementation-handoff.md).
+
+## Run locally
+
+Use Node.js 22.13 or newer. The supplied build helper targets Linux; macOS users can run Vite/Vinext directly or use a Linux container.
+
+```bash
+npm ci
+npm run dev
+```
+
+Build and serve:
+
+```bash
+npm run build
+npm run start
+```
+
+Domain and report checks:
+
+```bash
+node --experimental-strip-types --test tests/design.test.mjs tests/report.test.mjs
+```
+
+Regenerate the bundled matrix/scaffold data from the included FASTA:
+
+```bash
+python3 scripts/build-puf-library.py
+```
+
+The application uses React, TypeScript, Vinext/Vite, Cloudflare Workers and vendored Shadcn UI components. `package-lock.json` fixes dependencies. The existing `.openai/hosting.json` identifies the deployed Sites project; local development needs no LAMAR credentials. Keep environment values outside version control.
+
+## Source layout
+
+| Path | Purpose |
+| --- | --- |
+| `app/page.tsx` | Four-step workbench and data import |
+| `app/globals.css` | Workbench styles and responsive layout |
+| `lib/design.ts` | Coordinates, sequence search, module plans and input validation |
+| `lib/report.ts` | Standalone printable Design Report |
+| `data/` | Extracted TRM matrix, reusable library and scaffold audit |
+| `scripts/build-puf-library.py` | Reproducible data generation |
+| `public/` | Downloadable evidence and integration handoff |
+| `tests/design.test.mjs` | Scientific coordinate, scaffold and preference checks |
+| `tests/report.test.mjs` | Report consistency, missing values and HTML escaping |
+
+## LAMAR integration
+
+Import JSON containing `modelVersion`, `referenceSet`, `scoreType: "ranking_score"` and `predictions: [{context, score}]`. Each context must be exactly 101 nt with C at index 50; scores must lie in [0,1]. Use a fixed ranking population across PUF designs. RNA-only model scores are independent of TRM choice.
+
+A future backend should install a versioned full-transcript FASTA, including UTRs, with matching GTF/GFF3 annotation; normal users then select a reference. The planned API is documented in the handoff. Do not treat the browser subset screen as a whole-transcriptome result.
+
+## References (APA 7)
+
+GENCODE. (n.d.). *Human release 50 (GRCh38.p14)*. Retrieved September 2, 2026, from [https://www.gencodegenes.org/human/](https://www.gencodegenes.org/human/)
+
+Han, W., Yuan, B., Fan, X., Li, W., Yuan, Y., Zhang, Y., Wang, S., Shan, S., Hafner, M., Wang, Z., & Qiu, Z. (2025). Effective in vivo RNA base editing via engineered cytidine deaminase APOBECs fused with PUF proteins. *Nature Communications, 16*, Article 9727. [https://doi.org/10.1038/s41467-025-64748-6](https://doi.org/10.1038/s41467-025-64748-6)
+
+pdx12320. (n.d.). *PUF_fine_tuning_version1* [Computer software]. GitHub. [https://github.com/pdx12320/PUF_fine_tuning_version1](https://github.com/pdx12320/PUF_fine_tuning_version1)
+
+Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T. (2002a). *Crystal structure of the Pumilio-homology domain from human Pumilio1 in complex with NRE2-10 RNA* [Data set]. RCSB Protein Data Bank. [https://doi.org/10.2210/pdb1M8Y/pdb](https://doi.org/10.2210/pdb1M8Y/pdb)
+
+Wang, X., McLachlan, J., Zamore, P. D., & Hall, T. M. T. (2002b). Modular recognition of RNA by a human Pumilio-homology domain. *Cell, 110*(4), 501–512. [https://doi.org/10.1016/S0092-8674(02)00873-5](https://doi.org/10.1016/S0092-8674(02)00873-5)
+
+Zhou, W., Melamed, D., Banyai, G., Meyer, C., Tuschl, T., Wickens, M., Cao, J., & Fields, S. (2021). Expanding the binding specificity for RNA recognition by a PUF domain. *Nature Communications, 12*, Article 5107. [https://doi.org/10.1038/s41467-021-25433-6](https://doi.org/10.1038/s41467-021-25433-6)
+
+## AF3 structure showcase
+
+The Overview includes a coordinate-backed 3Dmol.js viewer for the uploaded WT PUF12-9–C388 complex: chain A is the exact 492-aa WT scaffold, chain B is ACAUGGAGGACGUGC. The fixed structure remains independent of draft TRM designs. Select a nucleotide or protein repeat to highlight its assigned TRMs; switch between repeat and per-atom pLDDT colors, toggle side chains, reset the camera, or download the CIF. Arrow keys rotate and +/- zoom when the viewer has keyboard focus.
+
+Model 0 is used by its AF3 ranking, with ipTM 0.91 and pTM 0.89. Five models from the same seed have ipTM 0.90–0.91. The audit records mean atom pLDDT, exact residue mapping, minimum TRM–RNA heavy-atom distances, and source ZIP checksum. The designed antiparallel register is explicit; geometry and confidence do not estimate editing efficiency.
+
+Reproduce packaging with scripts/prepare-structure.py and the source ZIP path. Only the selected CIF, input, compact audit and output terms are bundled. Source MSA/template files are not required at runtime. The viewer is served locally from public/vendor; see its BSD license and bundled notices. AF3 output retains its separate terms in public/structures/alphafold-output-terms.md.
+
+## Guided cases and engineering workspace
+
+- C388 guided case loads the supplied 15-nt C388 RNA at local C15 and exactly reconstructs WT PUF12. The two supplied C295/C871 fragments are labeled as a limited reference. No synthetic flanks or LAMAR scores are added.
+- Save/Open project round-trips the applied target, references, full module library, chosen TRMs, scores, experiment records, fusion inputs, notes and verified optional CIF structures. Inputs are validated and analysis is recomputed before restoring state. Apply draft edits before saving.
+- Evidence & engineering compares the supplied named constructs against WT, showing sequence/TRM differences and imported biological replicates. Assay labels must distinguish cell/dose/time/batch. Percentages are 0–100; SD is sample SD and unavailable for n=1. Delta is measured in percentage points.
+- Validation accepts the downloadable JSON template and exact IDs from the original construct catalog. No experimental editing efficiencies have been prefilled.
+- Fusion builder assembles the current PUF with user-provided linker and APOBEC in either order, then exports FASTA and one-based domain annotations.
+- LAMAR jobs connects to a user-entered HTTPS service and its real reference catalog, submits targets, refreshes states, resumes by job ID and downloads/imports results. See public/lamar-service-contract.md. No model service or transcriptome is bundled.
+- The structure viewer now links selectable TRM amino acids, the RNA register and the 3D view. Comparison accepts CIF files only after exact chain A protein and chain B RNA validation.
+
+
+## Position/source builder and local structural models
+
+Step 02 now offers Beginner and Advanced modes: assign P1–Pn to source R1–R8, inspect structural evidence with baseline TRMs, select source-specific preferred TRMs, then assess the final sequence. Sources are retained in the project library. Native replacements preserve positional loops and reference caps; source-unchanged cores retain WT non-TRM substitutions. A custom nonmatching scaffold cannot silently be replaced. 9–11R still require full scaffold sequences for assembly.
+
+The Examples navigation contains 31 real three-site constructs and 24 archived architectures from PUF_alphafold commit 70385e9b8cf7e4a01d261312c638ba39d413d5dc. Experimental means, position-group-out / construct-out predictions and locally recomputed training-refit scores are separate. All model disagreements remain visible.
+
+Three passive JSON models run in the browser: C388 interface logistic regression and C871/C295 CCR shallow random forests. Exact CP feature definitions, frozen-model provenance, 519-aa scope, thresholds and APA references are in public/structural-models-methods.md. No work classifier is relabeled as structural stability. New repeat architectures receive structural descriptors only. Uploaded AF3 ZIPs must include paired request/CIF/full_data JSON; sequences, chains, tokens and matrix dimensions are checked. Models require genuine 519-aa AF3 predictions with their original tags; the 492-aa structure is never padded.
+
+Source rows, model metadata and inputs remain versioned. Project JSON stores sequence-bound AF3 evidence. Matching results are included in offline Design Reports; changed designs invalidate stale evidence. Whole-transcriptome LAMAR service requirements remain unchanged.
+
+Validation for this change: 33 design/project/report/model checks pass with `node --test tests/design.test.mjs tests/project.test.mjs tests/report.test.mjs tests/architecture-models.test.mjs`. The original generic starter tests still expect development-preview metadata and unused catalog CSS utilities; these two legacy assertions are not product checks. Full TypeScript checking retains the pre-existing Cloudflare ambient type errors in db/index.ts and worker/index.ts. The production build succeeds.
+
+## Unified Advanced mode
+
+Advanced now edits P → source R → TRM in one panel, with automatic sequence-bound model evaluation alongside. Every source change retains all compatible TRM assignments; unchanged slots keep their exact protein segments, including imported case TRMs. No extra run/confirm action is needed. Cached exact-sequence CP features and matching uploaded CP are scored by the frozen 70385e9 models. Missing CP and unsupported repeat architectures have explicit separate states; sequence-only predictions are never fabricated. The model version is visible beside the scores. The repository's subsequent WT-relative analysis does not create a sequence-only scorer; this release retains the documented frozen absolute-endpoint model bundle.
