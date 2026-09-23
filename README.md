@@ -6,7 +6,7 @@
 
 Design PUF recognition modules, inspect sequence-bound evidence, and export a traceable RNA-editing design.
 
-**[Open ORCA →](https://puf-studio-igem.pdx12320.chatgpt.site)**
+**[Open ORCA →](https://sustech-bio2026-software.pdx12320.chatgpt.site)**
 
 [Quick start](#quick-start) · [Workflow](#workflow) · [Documentation](#documentation) · [Local development](#local-development)
 
@@ -16,11 +16,11 @@ Design PUF recognition modules, inspect sequence-bound evidence, and export a tr
 
 ## Quick start
 
-1. **[Open the website](https://puf-studio-igem.pdx12320.chatgpt.site).** Watch the short introduction or choose **Skip intro**.
+1. **[Open the website](https://sustech-bio2026-software.pdx12320.chatgpt.site).** Watch the short introduction or choose **Skip intro**.
 2. Scroll down on **Overview** and select the circular **Start** button.
 3. In **Design workbench**, choose a target window, build PUF repeats, inspect off-target evidence, and export a report.
 
-The website retains its existing access settings. GitHub access and website access are managed separately.
+The website is public and does not require a ChatGPT login. GitHub repository access is managed separately.
 
 ## Explore the application
 
