@@ -1,6 +1,5 @@
 export default function MemoryScene() {
-  return <svg className="memory-scene" viewBox="0 0 960 540" role="img" aria-labelledby="memory-scene-title">
-    <title id="memory-scene-title">An older man sits on a park bench, looking uncertain. His family approaches, familiar memories appear, and he smiles. A symbolic RNA strand connects the scene.</title>
+  return <svg className="memory-scene" viewBox="0 0 960 540" role="img" aria-label="An older man sits on a park bench, looking uncertain. His family approaches, familiar memories appear, and he smiles. A symbolic RNA strand connects the scene.">
     <defs>
       <radialGradient id="scene-halo"><stop stopColor="#a79be4" stopOpacity=".35"/><stop offset="1" stopColor="#a79be4" stopOpacity="0"/></radialGradient>
       <linearGradient id="scene-sky" x2="0" y2="1"><stop stopColor="#51426c" stopOpacity=".1"/><stop offset="1" stopColor="#7e6494" stopOpacity=".3"/></linearGradient>
