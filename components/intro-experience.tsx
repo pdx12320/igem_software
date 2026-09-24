@@ -7,7 +7,7 @@ import RnaScrollGuide from './rna-scroll-guide';
 
 const INTRO_PLAYBACK_RATE = 1.5;
 const IntroContext = createContext({ready: true});
-const TITLES = ['Design RNA editors.', 'One repeat at a time.', 'Explore RNA targets.', 'Build with precision.', 'ORCA'];
+const TITLES = ['Design RNA editors.', 'Explore RNA targets.', 'Build with precision.', "Let's go"];
 const TITLE_COLORS = ['#eee9f7', '#e1efe4', '#f6e1d6', '#dfeaf7', '#f5edcc', '#e1f0ed', '#f2e0eb', '#e7e4f8'];
 
 export default function IntroExperience({children}: {children: ReactNode}) {
