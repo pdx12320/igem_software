@@ -28,9 +28,7 @@ The website is public and does not require a ChatGPT login. GitHub repository ac
 | --- | --- |
 | **Overview** | Enter through Start, or jump to a workflow stage. Rotating titles, changing colors and repeatable scroll reveals introduce the project. |
 | **Design workbench** | Work through the four design stages; save and reopen projects. |
-| **Examples** | Explore supplied C388, C295 and C871 cases and archived repeat architectures. |
-| **Evidence & engineering** | Compare constructs and imported assay results; prepare fusion sequences and connect a LAMAR service. |
-| **Methods & evidence** | Read coordinate rules, model scope, evidence and references. Page entry starts at the top. |
+| **Methods & Evidence** | Read the methods and APA references, compare constructs, import assay results, prepare fusions and connect LAMAR. Tutorial video area is reserved until the video is ready. |
 
 The RNA guide tracks page position; select the small cytosine structure below it to return to the top. Reduced-motion preferences are supported.
 

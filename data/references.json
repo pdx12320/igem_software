@@ -1,21 +1,12 @@
 [
   {
-    "id": "3dmol",
-    "authors": "3Dmol.js.",
-    "year": "n.d.",
-    "title": "3Dmol.js",
-    "type": "software",
-    "descriptor": "[Computer software]",
-    "url": "https://3dmol.org/"
-  },
-  {
     "id": "gencode",
     "authors": "GENCODE.",
     "year": "n.d.",
     "title": "Human release 50 (GRCh38.p14)",
     "type": "web",
-    "retrieval": "Retrieved September 2, 2026, from",
-    "url": "https://www.gencodegenes.org/human/"
+    "url": "https://www.gencodegenes.org/human/release_50.html",
+    "note": "Reference resource only; this release is not bundled as a whole-transcriptome search index."
   },
   {
     "id": "afserver",
@@ -23,7 +14,8 @@
     "year": "n.d.",
     "title": "AlphaFold Server guides",
     "type": "web",
-    "url": "https://alphafoldserver.com/guides"
+    "url": "https://alphafoldserver.com/guides",
+    "note": ""
   },
   {
     "id": "han2025",
@@ -34,27 +26,22 @@
     "journal": "Nature Communications",
     "volume": "16",
     "locator": "Article 9727",
-    "url": "https://doi.org/10.1038/s41467-025-64748-6"
+    "url": "https://doi.org/10.1038/s41467-025-64748-6",
+    "note": "Read with the linked 2026 author correction (Han et al., 2026).",
+    "issue": "1"
   },
   {
-    "id": "puf-trm-models",
-    "authors": "pdx12320.",
-    "year": "2026a",
-    "title": "PUF AlphaFold CP analysis: Three-site dynamic-threshold classification",
-    "type": "software",
-    "descriptor": "(Commit 70385e9) [Computer software and data]",
-    "publisher": "GitHub",
-    "url": "https://github.com/pdx12320/PUF_alphafold/tree/70385e9b8cf7e4a01d261312c638ba39d413d5dc/dynamic_classification"
-  },
-  {
-    "id": "puf-architecture",
-    "authors": "pdx12320.",
-    "year": "2026b",
-    "title": "PUF architecture validation",
-    "type": "software",
-    "descriptor": "(Commit 70385e9) [Computer software and data]",
-    "publisher": "GitHub",
-    "url": "https://github.com/pdx12320/PUF_alphafold/tree/70385e9b8cf7e4a01d261312c638ba39d413d5dc/architecture_validation"
+    "id": "han2026",
+    "authors": "Han, W., Yuan, B., Fan, X., Li, W., Yuan, Y., Zhang, Y., Wang, S., Shan, S., Hafner, M., Wang, Z., & Qiu, Z.",
+    "year": "2026",
+    "title": "Author correction: Effective in vivo RNA base editing via engineered cytidine deaminase APOBECs fused with PUF proteins",
+    "type": "article",
+    "journal": "Nature Communications",
+    "volume": "17",
+    "locator": "Article 8256",
+    "url": "https://doi.org/10.1038/s41467-026-76669-z",
+    "note": "Correction notice linked by the original publication.",
+    "issue": "1"
   },
   {
     "id": "lamar",
@@ -64,7 +51,44 @@
     "type": "software",
     "descriptor": "[Computer software]",
     "publisher": "GitHub",
-    "url": "https://github.com/pdx12320/PUF_fine_tuning_version1"
+    "url": "https://github.com/pdx12320/PUF_fine_tuning_version1",
+    "note": "Software repository and interface provenance; no hosted model is bundled with this website.",
+    "retrieval": "Retrieved September 24, 2026, from"
+  },
+  {
+    "id": "puf-trm-models",
+    "authors": "pdx12320.",
+    "year": "2026a",
+    "title": "PUF AlphaFold CP analysis: Three-site dynamic-threshold classification",
+    "type": "software",
+    "descriptor": "(Commit 70385e9) [Computer software and data]",
+    "publisher": "GitHub",
+    "url": "https://github.com/pdx12320/PUF_alphafold/tree/70385e9b8cf7e4a01d261312c638ba39d413d5dc/dynamic_classification",
+    "note": "Pinned team software and data archive; not an independent validation study."
+  },
+  {
+    "id": "puf-architecture",
+    "authors": "pdx12320.",
+    "year": "2026b",
+    "title": "PUF architecture validation",
+    "type": "software",
+    "descriptor": "(Commit 70385e9) [Computer software and data]",
+    "publisher": "GitHub",
+    "url": "https://github.com/pdx12320/PUF_alphafold/tree/70385e9b8cf7e4a01d261312c638ba39d413d5dc/architecture_validation",
+    "note": "Pinned team software and data archive; not an independent validation study."
+  },
+  {
+    "id": "3dmol",
+    "authors": "Rego, N., & Koes, D.",
+    "year": "2015",
+    "title": "3Dmol.js: Molecular visualization with WebGL",
+    "type": "article",
+    "url": "https://doi.org/10.1093/bioinformatics/btu829",
+    "note": "",
+    "journal": "Bioinformatics",
+    "volume": "31",
+    "issue": "8",
+    "locator": "1322–1324"
   },
   {
     "id": "pdb1m8y",
@@ -74,7 +98,8 @@
     "type": "dataset",
     "descriptor": "[Data set]",
     "publisher": "RCSB Protein Data Bank",
-    "url": "https://doi.org/10.2210/pdb1M8Y/pdb"
+    "url": "https://doi.org/10.2210/pdb1M8Y/pdb",
+    "note": ""
   },
   {
     "id": "wang2002",
@@ -86,7 +111,8 @@
     "volume": "110",
     "issue": "4",
     "locator": "501–512",
-    "url": "https://doi.org/10.1016/S0092-8674(02)00873-5"
+    "url": "https://doi.org/10.1016/S0092-8674(02)00873-5",
+    "note": ""
   },
   {
     "id": "zhou2021",
@@ -97,6 +123,21 @@
     "journal": "Nature Communications",
     "volume": "12",
     "locator": "Article 5107",
-    "url": "https://doi.org/10.1038/s41467-021-25433-6"
+    "url": "https://doi.org/10.1038/s41467-021-25433-6",
+    "note": "Read with the linked 2022 publisher correction (Zhou et al., 2022).",
+    "issue": "1"
+  },
+  {
+    "id": "zhou2022",
+    "authors": "Zhou, W., Melamed, D., Banyai, G., Meyer, C., Tuschl, T., Wickens, M., Cao, J., & Fields, S.",
+    "year": "2022",
+    "title": "Publisher correction: Expanding the binding specificity for RNA recognition by a PUF domain",
+    "type": "article",
+    "journal": "Nature Communications",
+    "volume": "13",
+    "locator": "Article 3693",
+    "url": "https://doi.org/10.1038/s41467-022-31463-5",
+    "note": "Correction notice linked by the original publication.",
+    "issue": "1"
   }
 ]

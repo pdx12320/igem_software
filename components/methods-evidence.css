@@ -1,0 +1,39 @@
+/* One document: consistent rhythm, readable evidence tables and integrated tools. */
+.method-document{max-width:1320px;margin-inline:auto}
+.method-hero-links{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:28px}
+.method-hero-links a{display:inline-flex;gap:14px;align-items:center;color:var(--orca-paper);font-size:14px;text-decoration:none;border-bottom:1px solid var(--orca-lavender);padding:8px 0}
+.method-hero-links a:hover{color:var(--orca-blush)}
+.method-toc{max-height:calc(100dvh - 48px);overflow-y:auto}
+.method-toc a{display:flex;gap:12px;align-items:baseline}
+.method-toc a>span{font:11px ui-monospace,monospace;color:var(--orca-muted)}
+.method-body>section:target{scroll-margin-top:24px}
+.method-glossary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:28px 0;border:1px solid var(--orca-line);border-radius:12px;overflow:hidden}
+.method-glossary>div{padding:18px 20px;background:var(--orca-tint);border-bottom:1px solid var(--orca-line)}
+.method-glossary dt{font-weight:600;font-size:14px;color:var(--orca-indigo)}
+.method-glossary dd{margin:6px 0 0;font-size:13px;line-height:1.7;color:var(--orca-ink)}
+.method-protocol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:26px 0}
+.method-protocol>div{border-top:2px solid var(--orca-lavender);padding-top:16px}
+.method-protocol span{font:12px ui-monospace,monospace;color:var(--orca-muted)}
+.method-protocol h4{font-size:16px;margin:12px 0 0;color:var(--orca-indigo)}
+.method-protocol p{font-size:14px;line-height:1.7}
+.method-engineering-tools{margin:30px 0 0;min-width:0}
+.method-engineering-tools .lab-page{box-shadow:none;border:1px solid var(--orca-line);padding:0 20px 24px}
+.method-engineering-tools .panel-heading h4{font-size:22px;font-family:Georgia,serif}
+.method-engineering-tools .assay-cards,.method-engineering-tools .evidence-steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+.method-engineering-tools .lab-toolbar label{min-width:0}
+.method-engineering-tools .lab-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}
+.method-engineering-tools h3{font-size:20px}
+.method-engineering-tools p{font-size:14px}
+.method-video-placeholder{display:flex;gap:22px;align-items:center;background:var(--orca-tint);border:1px dashed var(--orca-lavender);border-radius:14px;padding:28px;margin-top:20px}
+.method-video-placeholder h3{font-size:24px;margin:0}
+.method-video-placeholder p{margin:8px 0 0;font-size:14px}
+.method-video-icon{font-size:32px;color:var(--orca-indigo)}
+.method-status{margin-left:auto;font-size:12px;white-space:nowrap;border:1px solid var(--orca-lavender);border-radius:20px;padding:6px 10px;color:var(--orca-indigo)}
+.method-references .method-reference-note{display:block;text-indent:0;font-size:12px;line-height:1.65;color:var(--orca-muted);margin-top:8px}
+.method-references li:target{background:var(--orca-tint);border-radius:6px;outline:8px solid var(--orca-tint)}
+.method-document a:focus-visible{outline:2px solid var(--orca-violet);outline-offset:4px}
+@media(max-width:900px){.method-toc{max-height:none;overflow-x:auto}.method-layout{gap:20px}.method-engineering-tools .assay-cards,.method-engineering-tools .evidence-steps{grid-template-columns:1fr}.method-toc a{flex-shrink:0}}
+@media(max-width:600px){.method-glossary,.method-protocol{grid-template-columns:1fr}.method-video-placeholder{flex-wrap:wrap;padding:22px}.method-status{margin-left:0}.method-engineering-tools .lab-page{padding:0 12px 20px}.method-hero-links{gap:8px 20px}.method-engineering-tools .comparison-grid,.method-engineering-tools .fusion-inputs{grid-template-columns:1fr}}
+@media print{.method-hero-links,.method-engineering-tools,.method-video-placeholder{display:none}.method-glossary,.method-protocol{break-inside:avoid}}
+
+.lab-sequence{margin-top:16px}.lab-sequence summary{cursor:pointer;color:var(--orca-indigo);font-size:13px}.lab-sequence summary:focus-visible{outline:2px solid var(--orca-violet);outline-offset:3px}.method-source-note{display:block;margin-top:10px;font-size:13px;color:var(--orca-muted)}
