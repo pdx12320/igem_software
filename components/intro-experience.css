@@ -62,3 +62,13 @@ body:has(.overview-main){background:var(--orca-scene-bg,#eee9f7);transition:back
 .rna-scroll-guide .rna-top-base:hover{background:#f5c6cf66}.rna-scroll-guide .rna-top-base:hover .cytosine-icon{transform:translateY(-2px)}
 @media(max-width:520px){.start-orbit{width:134px;height:134px}.start-reveal{padding:55px 0 70px}.rna-scroll-guide{right:6px;width:48px}.app-shell .overview-main{padding-left:56px;padding-right:56px}}
 @media(prefers-reduced-motion:reduce){body:has(.overview-main){transition:none}.start-orbit,.start-orbit::before,.start-orbit::after,.start-orbit>svg,.journey-grid button,.journey-grid button>svg{transition:none;animation:none!important}.start-orbit:hover,.journey-grid button:hover{transform:none}}
+
+/* A compact circular exit with an expanding orbit on hover. */
+.intro-top .intro-skip{position:relative;display:grid;place-items:center;flex-shrink:0;width:76px;height:76px;padding:0;border-radius:50%;font-size:15px;transition:transform .3s ease,background .3s ease,box-shadow .3s ease,border-color .3s ease}
+.intro-skip::after{content:"";position:absolute;inset:-7px;border:1px dashed #c6c4ff;border-radius:50%;opacity:0;transform:scale(.88) rotate(-35deg);pointer-events:none;transition:transform .4s ease,opacity .4s ease}
+.intro-top .intro-skip:focus-visible{background:#35305d;border-color:#c6c4ff;box-shadow:0 0 24px #9d9cf433}
+.intro-skip:focus-visible::after{opacity:.8;transform:scale(1) rotate(0)}
+@media(hover:hover){.intro-top .intro-skip:hover{transform:translateY(-3px) scale(1.05);background:#35305d;border-color:#c6c4ff;box-shadow:0 0 24px #9d9cf433}.intro-skip:hover::after{opacity:.8;transform:scale(1) rotate(25deg)}}
+.intro-top .intro-skip:active{transform:scale(.96)}
+@media(max-width:650px){.intro-top .intro-skip{width:62px;height:62px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.intro-top .intro-skip,.intro-skip::after{transition:none}.intro-top .intro-skip:hover,.intro-top .intro-skip:active,.intro-skip::after{transform:none}}

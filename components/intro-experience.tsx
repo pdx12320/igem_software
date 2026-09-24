@@ -45,7 +45,7 @@ export default function IntroExperience({children}: {children: ReactNode}) {
 
   return <IntroContext.Provider value={{ready: !playing}}>
     {playing && <section className="memory-intro" aria-label="An illustrated vision of memory and connection">
-      <div className="intro-top"><span>SUSTech</span><button ref={skip} onClick={() => {returnFocus.current = true; setPlaying(false);}}>Skip intro <span aria-hidden="true">↗</span></button></div>
+      <div className="intro-top"><span>SUSTech</span><button ref={skip} className="intro-skip" aria-label="Skip intro" onClick={() => {returnFocus.current = true; setPlaying(false);}}>Skip</button></div>
       <div className="intro-story">
         <p className="intro-kicker">EVERY MEMORY IS A CONNECTION</p>
         <div className="memory-art">
