@@ -2,60 +2,16 @@
 
 import {createContext, useContext, useEffect, useRef, useState, type ReactNode} from 'react';
 import './intro-experience.css';
-import MemoryScene from './memory-scene';
 import RnaScrollGuide from './rna-scroll-guide';
 
-const INTRO_PLAYBACK_RATE = 1.5;
 const IntroContext = createContext({ready: true});
 const TITLES = ['Design RNA editors.', 'Explore RNA targets.', 'Build with precision.', "Let's go"];
 const TITLE_COLORS = ['#eee9f7', '#e1efe4', '#f6e1d6', '#dfeaf7', '#f5edcc', '#e1f0ed', '#f2e0eb', '#e7e4f8'];
 
 export default function IntroExperience({children}: {children: ReactNode}) {
-  const [playing, setPlaying] = useState(true);
-  const content = useRef<HTMLDivElement>(null);
-  const skip = useRef<HTMLButtonElement>(null);
-  const returnFocus = useRef(false);
-
-  useEffect(() => {
-    if (!playing) return;
-    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const finish = () => setPlaying(false);
-    if (motion.matches) { finish(); return; }
-    const timer = window.setTimeout(finish, 11400 / INTRO_PLAYBACK_RATE);
-    const onPreference = () => { if (motion.matches) finish(); };
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') { returnFocus.current = true; finish(); }
-    };
-    motion.addEventListener('change', onPreference);
-    window.addEventListener('keydown', onKey);
-    return () => {
-      window.clearTimeout(timer);
-      motion.removeEventListener('change', onPreference);
-      window.removeEventListener('keydown', onKey);
-    };
-  }, [playing]);
-
-  useEffect(() => {
-    if (playing && returnFocus.current) skip.current?.focus();
-    if (!playing && (returnFocus.current || document.activeElement === document.body)) {
-      content.current?.querySelector<HTMLElement>('h1')?.focus({preventScroll: true});
-      returnFocus.current = false;
-    }
-  }, [playing]);
-
-  return <IntroContext.Provider value={{ready: !playing}}>
-    {playing && <section className="memory-intro" aria-label="An illustrated vision of memory and connection">
-      <div className="intro-top"><span>SUSTech</span><button ref={skip} className="intro-skip" aria-label="Skip intro" onClick={() => {returnFocus.current = true; setPlaying(false);}}>Skip</button></div>
-      <div className="intro-story">
-        <p className="intro-kicker">EVERY MEMORY IS A CONNECTION</p>
-        <div className="memory-art">
-          <MemoryScene/>
-        </div>
-        <div className="intro-captions"><p className="intro-caption-before">When familiar moments feel far away.</p><p className="intro-caption-middle">A familiar face. A moment of connection.</p><p className="intro-caption-after">Small connections. New possibilities.</p></div>
-      </div>
-    </section>}
-    <div ref={content} className={`experience-content ${playing ? 'intro-pending' : 'intro-ready'}`} inert={playing}>{children}</div>
-    {!playing && <RnaScrollGuide/>}
+  return <IntroContext.Provider value={{ready: true}}>
+    <div className="experience-content">{children}</div>
+    <RnaScrollGuide/>
   </IntroContext.Provider>;
 }
 
@@ -71,7 +27,7 @@ export function AnimatedHeading() {
   }, []);
   useEffect(() => {
     if (!ready || reduced) return;
-    let timer: ReturnType<typeof setTimeout>;
+    let timer: number;
     let phrase = 0, count = 0, color = 0;
     let deleting = false;
     const tick = () => {
