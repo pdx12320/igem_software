@@ -8,7 +8,7 @@ Design PUF recognition modules, inspect sequence-bound evidence, and export a tr
 
 **[Open ORCA →](https://sustech-bio2026-software.pdx12320.chatgpt.site)**
 
-[Quick start](#quick-start) · [Workflow](#workflow) · [Documentation](#documentation) · [Local development](#local-development)
+[Quick start](#quick-start) · [Workflow](#workflow) · [Software DBTL](docs/software-dbtl.md) · [Documentation](#documentation) · [Local development](#local-development)
 
 </div>
 
@@ -66,6 +66,7 @@ The local LaMAR inference environment and missing components remain unfinished. 
 
 | Resource | Contents |
 | --- | --- |
+| [Software DBTL](docs/software-dbtl.md) | Five software engineering iterations, verification evidence and planned follow-up work |
 | [Implementation guide](public/implementation-handoff.md) | Coordinates, data contracts, reports and integration details |
 | [Structural-model methods](public/structural-models-methods.md) | Model features, scope, validation and references |
 | [Workflow model deployment](docs/model-service-deployment.md) | Administrator configuration, exact payloads and unresolved model prerequisites |
