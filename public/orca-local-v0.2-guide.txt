@@ -1,0 +1,78 @@
+# ORCA 本地分析 · 0.2.0
+
+双击安装本地模型，填写网站 CSV 和物种 FASTA 路径，在自己的电脑运行 ESM-2 排序与 LaMAR。
+
+1. 在网站完成目标和 PUF 候选设计，从 **Work → 03 Export** 下载 CSV。
+2. 将 ZIP 完整解压到有写入权限的本机文件夹。macOS 双击 `Start-macOS.command`；Windows x64 双击 `Start-Windows.cmd`。
+3. 首次启动自动下载并校验独立 Python 3.10.19、固定版本依赖、ESM-2 权重（约 136 MB），以及含适配后 LaMAR 权重的旧版 ORCA 发布包（约 324 MB）。需要联网；环境和文件都保存在当前文件夹。
+4. 保持终端窗口开启。浏览器打开 `http://127.0.0.1:8765/` 后，填写网站导出 CSV、物种 FASTA 的完整本地路径。物种名称可选，然后点击 **Run analysis**。
+5. 完成后下载排序 CSV、LaMAR 位点 CSV、合并 CSV 和运行清单。每次任务使用新的 `results/<run-id>/` 目录，原输入文件不被覆盖。
+
+这是模型安装包，ZIP 不内置已安装依赖或大型权重。首次安装后，会校验并复用本地模型；中断下载保留以供重试，校验错误不会静默覆盖。设置日志和 ESM-2 参考特征缓存位于 `.runtime/`。建议先使用 `examples/` 中的小样本。完整物种 FASTA 的分析耗时可能很长；目前没有经过测量的整物种耗时或最低内存保证。
+
+## 输入与结果
+
+CSV 保留网站原始列名和 1-based 坐标，需包含组装好的 PUF 蛋白或保存的候选蛋白。已有分数列不会作为本次模型输入。FASTA 为未压缩核苷酸序列文件，`>` 后第一个空白分隔字段为唯一 ID。通常使用转录本方向的序列；若输入基因组，程序仅分析文件中给出的记录方向，不自动推断转录本、剪接或反向链。
+
+如果 CSV 已记录参考 FASTA 的 SHA-256，所选文件必须匹配。参考中若存在目标 ID，该记录全长序列需与网站导出的目标 RNA 相符（仅规范化 U/T）。如果目标 ID 不在参考中，程序会记录这一情况，继续评分参考中的位点，但不给目标绑定一个 LaMAR 位点分数。
+
+| 输出 | 内容 |
+| --- | --- |
+| `protein-ranking.csv` | 候选蛋白排序、ESM-2 与冻结 Ridge 模型的独立输出；不兼容骨架保留为未评分。 |
+| `lamar-sites.csv` | FASTA 中按原始记录顺序列出的每个 C，含未评分原因和边界填充标记。 |
+| `combined-results.csv` | 按网站共享列格式保存目标、候选蛋白和参考位点。 |
+| `manifest.json` | 输入和模型哈希、软件版本、数量、完成状态、输出文件校验值。 |
+
+ESM-2 下载固定版本 `facebook/esm2_t12_35M_UR50D`，重新计算原始参考序列的掩码对数概率特征。保持原始 493-aa 上下文、冻结 Ridge 系数、特征缩放和 C295/C388/C871 排序定义；通过数值复现检查后复用缓存。排序仅支持固定 492-aa 骨架或其原始末端 G 的 493-aa 形式，其他骨架不补造分数。
+
+LaMAR 使用适配后的 101-nt C 中心权重和原始 N 填充方式，保留每个 C；含模型不支持的 IUPAC 字母的上下文标为未评分。LaMAR 是独立的 RNA 上下文原始分数，不随新设计的 PUF 改变，也不是编辑概率。两个模型分别输出，不合并成总概率。计算完成不等于生物学有效性已经验证。
+
+## 停止与排错
+
+点击 **Cancel** 保留部分结果；终端 `Ctrl+C` 停止本包启动的服务和 worker。失败或取消的任务不会作为完整结果下载。正常推理通过本机文件和 loopback 网页连接运行；安装阶段联网下载所需资产。
+
+Windows x64 和 Intel Mac 仍为未完成实机验收的预览平台。Apple Silicon 的测试范围以具体小样本记录为准，不代表所有 macOS 版本的干净机器兼容性认证。
+
+启动失败时查看 `.runtime/logs/`。出现锁文件时，先确认对应安装器是否仍在运行，保留日志和结果。macOS 可通过 Finder 的“打开”流程运行已核对的下载脚本；不要批量改变文件夹权限。Windows 启动器不修改 PowerShell 执行策略。高级用户可用 `ORCA_PORT` 指定空闲端口，或传入 `--web-only` 仅预览界面、不安装模型；首次预览仍可能下载 Python。
+
+模型固定信息见 `asset-manifest.json`；来源和许可见 [第三方说明](THIRD-PARTY-NOTICES.md)。
+
+
+# ORCA Local · 0.2.0
+
+Install the local models, enter the CSV exported from the ORCA website and a species FASTA path, then run ESM-2 ranking and LaMAR on your computer.
+
+1. On the website, prepare your target and PUF candidates, then download the CSV from **Work → 03 Export**.
+2. Extract the complete ZIP to a writable local folder. Double-click `Start-macOS.command` on macOS or `Start-Windows.cmd` on Windows x64.
+3. First launch downloads a verified Python 3.10.19 runtime, pinned dependencies, ESM-2 weights (136 MB), and the previous ORCA release archive (324 MB) containing the supplied LaMAR weights. Files and the isolated environment stay in this folder. Internet is required for this installation.
+4. Keep the console open. The browser opens `http://127.0.0.1:8765/`. Paste the full paths to the website CSV and your species FASTA, optionally enter a species label, and select **Run analysis**.
+5. Download the ranking, LaMAR sites, combined CSV and manifest. Each run has a new `results/<run-id>/` folder. The original input files remain unchanged.
+
+The download package is a model installer; it does not bundle installed dependencies or the large weights. Matching local models are verified and reused. Interrupted downloads are retained for retry; a checksum mismatch is reported without replacing the existing file. Setup logs and the ESM-2 reference cache are under `.runtime/`. Start with the supplied small `examples/` files before using your full reference. Complete FASTA analysis can take substantially longer; there is no measured species-wide runtime or minimum-memory guarantee.
+
+## Inputs and outputs
+
+Use the website's full scientist CSV, with its original column names and 1-based coordinates. Saved score columns are ignored for the new local run. The CSV must contain an assembled PUF protein or saved protein candidates. Use an uncompressed FASTA of nucleotide records with unique IDs; each ID is the first whitespace-delimited field after `>`. Transcript-oriented sequence is the usual input. A genome file is evaluated in its supplied record orientation; this tool does not annotate transcripts or map splicing or reverse strands.
+
+If the CSV records a FASTA checksum, the selected FASTA must match it. If its target ID is present, that record's entire sequence must match the exported target RNA after U/T normalization. An absent target ID is recorded and receives no target-locus LaMAR score. It does not prevent scoring the reference records.
+
+| File | Contents |
+| --- | --- |
+| `protein-ranking.csv` | Candidate ranks and the separate ESM-2 and frozen Ridge outputs; incompatible scaffolds remain unscored. |
+| `lamar-sites.csv` | Every C in FASTA order, including unscored contexts and boundary-padding flags. |
+| `combined-results.csv` | Target, candidate and reference-site rows in the shared website column layout. |
+| `manifest.json` | Input/model hashes, software versions, counts, completion status and output hashes. |
+
+ESM-2 uses pinned `facebook/esm2_t12_35M_UR50D` weights to recompute the original masked-reference log-probability features. The original 493-aa context, frozen Ridge coefficients, feature scaling and C295/C388/C871 score definition are retained. Features must pass a numerical reproduction check; a successful cache is reused. Ranking supports the fixed 492-aa scaffold or its original 493-aa terminal-G form. Other scaffolds are listed without an invented ranking.
+
+LaMAR uses the supplied 101-nt C-centered checkpoint and original N padding. All C sites are retained; unsupported IUPAC contexts are marked unscored. Its raw score depends on the RNA context, is independent of a newly designed PUF, and is not an editing probability. The two models' outputs remain separate. A completed run is a software result, not biological validation.
+
+## Operation
+
+**Cancel** keeps partial results. `Ctrl+C` stops this package's server and worker. A failed or cancelled run cannot be downloaded as a completed run. Normal analysis uses local files and a loopback browser connection; setup downloads runtime/model assets.
+
+Windows x64 and Intel Mac remain preview platforms without a real-machine acceptance test. Apple Silicon tests must be read at their recorded fixture scope; they do not establish clean-machine compatibility across macOS versions.
+
+If startup fails, inspect `.runtime/logs/`. For an existing lock, first check whether its installer is still running; preserve logs and results. On macOS, use Finder's **Open** workflow for a trusted downloaded launcher; do not change permissions across the entire folder. Windows launchers do not change the PowerShell execution policy. An advanced user can set `ORCA_PORT` to a free port or pass `--web-only` to preview the interface without models. A first preview launch may still download Python.
+
+See [中文说明](README-zh.md), [third-party notices](THIRD-PARTY-NOTICES.md), and `asset-manifest.json` for pinned assets and provenance.

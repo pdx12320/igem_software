@@ -1,0 +1,23 @@
+ORCA 本地一键运行包 0.1.0-preview
+
+压缩包：ORCA-oneclick-v0.1.0-preview-20261012.zip
+大小：323,755,994 字节（约 324 MB）
+SHA-256：5911bf4d9cf16f8f7411eb18b1c07794ea92e3e7ea594c383c5389ee2cc8643f
+
+使用方法
+1. 完整解压，打开 ORCA-local 文件夹。
+2. macOS 双击 Start-macOS.command；Windows x64 双击 Start-Windows.cmd。
+3. 首次联网下载固定 Python 与依赖，均安装在包内，无需管理员权限、Node.js 或 Conda。
+4. 保持终端开启，浏览器将打开本地界面。
+5. 在 Work 点 Open，选择 examples/orca-project.json；在 Off-targets 选择 examples/synthetic-transcripts.fasta，然后点 Run LAMAR。
+6. 完成后下载完整 CSV 或完整 JSON。合成示例共 4 个 C 位点：3 个实际评分，1 个含 R 的上下文保留为未评分。
+
+包内中文详细说明：README-zh.md
+测试记录：docs/validation-report.md
+结果格式：docs/results-schema.md
+
+已验证：当前 macOS Apple Silicon 测试机的隔离 Python 3.10.19 首次设置、实际小样本 LaMAR、浏览器完整 CSV 下载及环境复用。116 项前端相关检查和 19 项标准库检查通过；压缩包 CRC 与文件 SHA-256 全部通过。
+尚未实机验收：Windows x64、Intel Mac、整物种运行和各操作系统版本的干净机器流程。
+PUF 排序使用原有缓存 ESM-2 特征；本版本没有实时计算新 ESM-2 特征。LaMAR 分数不是编辑概率，也不依赖新设计的 PUF。完整 JSON v2 与旧网站预览 JSON v1 是不同格式。
+
+首次安装完成后，模型和输入处理在本机运行。原始输入不被覆盖；运行记录保留在解压包内 .runtime/runs/。Ctrl+C 关闭本包启动的服务。

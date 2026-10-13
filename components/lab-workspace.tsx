@@ -7,7 +7,6 @@ import {NativeSelect} from '@/components/ui/native-select';
 import {Tabs,TabsContent,TabsList,TabsTrigger} from '@/components/ui/tabs';
 import {Table,TableBody,TableCell,TableHead,TableHeader,TableRow} from '@/components/ui/table';
 import StructureShowcase from '@/components/structure-showcase';
-import LamarJobs from '@/components/lamar-jobs';
 import {checkStructure} from '@/lib/structure-input';
 import constructs from '@/data/constructs.json';
 import audit from '@/data/structure-showcase.json';
@@ -15,7 +14,7 @@ import {assembleFusion,summarize,validateAssays,type LabState} from '@/lib/proje
 import type {PredictionSet} from '@/lib/design';
 function save(name:string,value:string,type='application/json'){const u=URL.createObjectURL(new Blob([value],{type}));const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
 const sites=['C388','C295','C871'] as const;
-export default function LabWorkspace({state,onChange,protein,jobTarget,onPredictions}:{state:LabState;onChange:(s:LabState)=>void;protein:string|null;jobTarget:{id:string;sequence:string;position:number;motif:string};onPredictions:(p:PredictionSet)=>void}){
+export default function LabWorkspace({state,onChange,protein}:{state:LabState;onChange:(s:LabState)=>void;protein:string|null;jobTarget?:{id:string;sequence:string;position:number;motif:string};onPredictions?:(p:PredictionSet)=>void}){
  const [variant,setVariant]=useState(constructs[1].id),[assay,setAssay]=useState(''),[error,setError]=useState(''),[structureOpen,setStructureOpen]=useState(false);
  const [structureChoice,setStructureChoice]=useState('wt'),[structureUrl,setStructureUrl]=useState('');
  const candidate=variant==='current-design'?{id:variant,sequence:protein}:constructs.find(x=>x.id===variant)!;
@@ -29,7 +28,7 @@ export default function LabWorkspace({state,onChange,protein,jobTarget,onPredict
  try{fusion=assembleFusion(protein,state.fusion);}catch(e){fusionError=(e as Error).message;}
  async function importAssay(file?:File){if(!file)return;try{if(file.size>2000000)throw Error('Experiment file limit: 2 MB.');const rows=validateAssays(JSON.parse(await file.text()));const unknown=rows.find(r=>!constructs.some(c=>c.id===r.construct));if(unknown)throw Error('Unknown construct ID: '+unknown.construct+'. Use IDs from the construct catalog.');onChange({...state,assays:rows});setError('');}catch(e){setError((e as Error).message);}}
  return <section className="lab-page panel"><div className="panel-heading"><h4>Experiments</h4></div>
- <Tabs defaultValue="compare"><TabsList className="lab-tabs"><TabsTrigger value="compare">Compare</TabsTrigger><TabsTrigger value="validation">Validation</TabsTrigger><TabsTrigger value="fusion">Fusion</TabsTrigger><TabsTrigger value="jobs">LAMAR jobs</TabsTrigger></TabsList>
+ <Tabs defaultValue="compare"><TabsList className="lab-tabs" style={{gridTemplateColumns:'repeat(3,minmax(0,1fr))'}}><TabsTrigger value="compare">Compare</TabsTrigger><TabsTrigger value="validation">Validation</TabsTrigger><TabsTrigger value="fusion">Fusion</TabsTrigger></TabsList>
  {error&&<p className="notice error" role="alert">{error}</p>}
  <TabsContent value="compare"><div className="lab-toolbar"><label>Compare with WT<NativeSelect value={variant} onChange={e=>{setVariant(e.target.value);setStructureOpen(false);}}>{constructs.slice(1).map(c=><option key={c.id} value={c.id}>{c.id}</option>)}<option value="current-design">Current workbench design</option></NativeSelect></label><label>Experiment conditions<NativeSelect value={chosenAssay} onChange={e=>setAssay(e.target.value)} disabled={!assays.length}>{assays.length?assays.map(a=><option key={a}>{a}</option>):<option value="">Import experiment data</option>}</NativeSelect></label></div>
  <div className="comparison-grid">{[wt,candidate].map((c,i)=><article key={i}><span>{i?'SELECTED CONSTRUCT':'BASELINE'}</span><h3>{c.id}</h3><p>{c.sequence?c.sequence.length+' aa':'Full scaffold required'}</p><details className="lab-sequence"><summary>Protein sequence</summary><code className="sequence-diff">{c.sequence?.split('').map((aa,j)=><span key={j} className={i&&c.sequence?.length===wt.sequence.length&&aa!==wt.sequence[j]?'changed-aa':''} title={'Residue '+(j+1)}>{aa}</span>)||'Protein sequence unavailable'}</code></details></article>)}</div>
@@ -49,6 +48,5 @@ export default function LabWorkspace({state,onChange,protein,jobTarget,onPredict
  <div className="fusion-inputs"><label>Linker sequence<Textarea value={state.fusion.linker} onChange={e=>onChange({...state,fusion:{...state.fusion,linker:e.target.value}})} placeholder="Actual linker amino-acid sequence"/></label><label>APOBEC sequence<Textarea value={state.fusion.apobec} onChange={e=>onChange({...state,fusion:{...state.fusion,apobec:e.target.value}})} placeholder="Exact APOBEC variant amino-acid sequence"/></label></div>
  {fusion?<><div className="domain-strip">{fusion.domains.map(d=><div key={d.name} className={'domain-'+d.name.toLowerCase()} style={{flex:Math.max(1,d.sequence.length/40)}}><b>{d.name}</b><span>{d.start}–{d.end} · {d.sequence.length} aa</span></div>)}</div><code className="fusion-sequence">{fusion.sequence}</code><div className="lab-toolbar"><Button onClick={()=>save('puf-apobec-fusion.fasta','>'+state.fusion.order+' length='+fusion!.sequence.length+'\n'+fusion!.sequence.match(/.{1,70}/g)!.join('\n')+'\n','text/plain')}>Download fusion FASTA</Button><Button variant="outline" onClick={()=>save('fusion-domains.json',JSON.stringify(fusion,null,2))}>Domain annotation</Button></div></>:<p className="lab-note">{fusionError}</p>}
  </TabsContent>
- <TabsContent value="jobs"><LamarJobs target={jobTarget} onPredictions={onPredictions}/></TabsContent>
  </Tabs></section>;
 }
