@@ -1,0 +1,118 @@
+{
+  "version": "0.1.0-preview",
+  "fileName": "ORCA-oneclick-v0.1.0-preview-20261012.zip",
+  "bytes": 323755994,
+  "sha256": "5911bf4d9cf16f8f7411eb18b1c07794ea92e3e7ea594c383c5389ee2cc8643f",
+  "zipType": "shared Windows/macOS launcher package",
+  "parts": [
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-000.bin",
+      "bytes": 16777216,
+      "sha256": "e9b7420d87a98ef36a7a8bcdb497301820b269599aef7ec4f6a3d21f797de4f8"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-001.bin",
+      "bytes": 16777216,
+      "sha256": "2618858cba6619f148d4faafeecfc455ace44c265747443f86e01473e500933d"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-002.bin",
+      "bytes": 16777216,
+      "sha256": "b483bfba9c4ee578b0c150c9d7c9da2f5a380bb58929580e2193ea945a04eb87"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-003.bin",
+      "bytes": 16777216,
+      "sha256": "01f3f463fe209aacb9d0c1f2d0d44d2e5268089a73aa2c4c3a23c411acfe7e74"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-004.bin",
+      "bytes": 16777216,
+      "sha256": "f9a858e3468d920e3a9b310f78baba2fe425da73ef374bb1984b6cec9eec8914"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-005.bin",
+      "bytes": 16777216,
+      "sha256": "720982ddf32a2c4bc0c71babaa1441a47162f3183530c8c6f5f631e86ae7fde3"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-006.bin",
+      "bytes": 16777216,
+      "sha256": "391f91bed066fe2be4df8f8c0939c3c2d3e0ee0e77d0e0410b5a2b17288da834"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-007.bin",
+      "bytes": 16777216,
+      "sha256": "c3fbddb3d01388ce8d588f0805d3378cad1f92056fb8edfd8eff0c068eb5dfb9"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-008.bin",
+      "bytes": 16777216,
+      "sha256": "f322b1d9ac912f2d40fd2eb19448af857bc2842d6e38e326dc9e6544ea07c8a4"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-009.bin",
+      "bytes": 16777216,
+      "sha256": "087e90190e2975243c3b600ac47e7c4e826005bfc9b18449389bd6c1373a15b2"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-010.bin",
+      "bytes": 16777216,
+      "sha256": "fdd07b9571c8bf3ddee68979ccdd93b3ee565e31ae46b352eb8f15e2c3c605ed"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-011.bin",
+      "bytes": 16777216,
+      "sha256": "edec12965e47691fa14fdf11782cff83294cba381ab01cbd06ac68546cade67b"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-012.bin",
+      "bytes": 16777216,
+      "sha256": "d1ff11002b479a009c572153fcb2112ebe1a74d81193c7a648ca9bed1f9bcfe1"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-013.bin",
+      "bytes": 16777216,
+      "sha256": "02deb3e3fb6b06233eb76f89c51ddd2f8d12e9a8571d3102b2e6e5cf30f5ff13"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-014.bin",
+      "bytes": 16777216,
+      "sha256": "8e14e44a93d1e9b66d3b914933925e0aaf44d9a6276076143ecbc9009bc2a401"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-015.bin",
+      "bytes": 16777216,
+      "sha256": "ae6d3025ff7c6c869b8ea70fc4d9e43d60e62f32590466faba0d1f5bef9f28e0"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-016.bin",
+      "bytes": 16777216,
+      "sha256": "83ddd79dc16596465d9e0fc3aae74be0fddeda7259f543a3dbfb928653dc4288"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-017.bin",
+      "bytes": 16777216,
+      "sha256": "471d37e698d6725e0d80a0b58d7d6667c092485a86e5f25e2c6ff9b4246f9107"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-018.bin",
+      "bytes": 16777216,
+      "sha256": "f398b141154b267a662a6c00ad6daeb096583a2773cf9d050cee6330d56e20e8"
+    },
+    {
+      "path": "/download-assets/orca-v0.1.0-preview/part-019.bin",
+      "bytes": 4988890,
+      "sha256": "fca28e9aa88577dba2789ea3acdf8682fdb8e9e999e75b489e423de653eae054"
+    }
+  ],
+  "urls": {
+    "windows": "/downloads/v0.1.0-preview/windows.zip",
+    "macos": "/downloads/v0.1.0-preview/macos.zip"
+  },
+  "verification": {
+    "macosArm64": "current-host setup and small CPU fixture checked",
+    "macosIntel": "untested preview",
+    "windowsX64": "untested preview"
+  }
+}

@@ -40,3 +40,9 @@ next-env.d.ts
 /.sites-runtime/
 /outputs/
 /work/
+
+# Immutable release assets are verified build inputs, packaged in dist/client.
+/public/download-assets/
+
+# Generated TypeScript incremental build state.
+*.tsbuildinfo

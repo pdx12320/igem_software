@@ -1,0 +1,10 @@
+{
+  "version": "0.2.0-preview",
+  "fileName": "ORCA-oneclick-v0.2.0-preview-20261013.zip",
+  "bytes": 204412,
+  "sha256": "0f03a090bedfc4d93fa0b414efe5202d8aed4d8c3e892eabc5958c2887d82d25",
+  "urls": {
+    "windows": "/downloads/v0.2.0-preview/windows.zip",
+    "macos": "/downloads/v0.2.0-preview/macos.zip"
+  }
+}

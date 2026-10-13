@@ -20,7 +20,7 @@ ORCA is a reproducible demonstration and usage tool for the team's **Best Model*
 
 1. **[Open the website](https://sustech-bio2026-software.pdx12320.chatgpt.site).** The main interface opens immediately, without an opening animation.
 2. Select **Start** on Overview, or **Work** in the navigation.
-3. Enter target RNA, build and save PUF candidates, upload species transcript FASTA, and export a scientist CSV. The supplied PUF ranker runs in the browser. LaMAR analysis requires a compatible service configured by the administrator.
+3. Enter target RNA, build and save PUF candidates, and download CSV from **03 Export**. Download the Windows or macOS local installer on that page; its first launch installs the models. Enter the exported CSV and species FASTA paths in the local application.
 
 The website is public and does not require a ChatGPT login. GitHub repository access is managed separately.
 
@@ -29,7 +29,7 @@ The website is public and does not require a ChatGPT login. GitHub repository ac
 | Page | What you can do |
 | --- | --- |
 | **Overview** | Rotating titles, a Start button and workflow cards. |
-| **Work** | RNA, PUF, Off-targets and Export; save and reopen projects. |
+| **Work** | 01 RNA, 02 PUF and 03 Export; save and reopen projects. |
 | **Methods** | Expand methods and references, compare constructs, import assay results and prepare fusions. |
 
 The RNA guide tracks page position; select the small cytosine structure below it to return to the top. Reduced-motion preferences are supported.
@@ -37,20 +37,18 @@ The RNA guide tracks page position; select the small cytosine structure below it
 ## Workflow
 
 1. **Choose a window** — supply RNA/DNA or a FASTA record, a 1-based target C coordinate and an 8–12 nt recognition length.
-2. **Build & rank PUF** — assign repeats and TRMs, save protein snapshots, and rank 492-aa candidates directly in the browser using the supplied module 2 model. The fixed extra terminal G has been removed from its input representation; frozen coefficients and cached ESM-2 features are preserved. Imported 493-aa proteins ending in G are normalized with an explicit notice. Its specificity score describes the fixed C295/C388/C871 assays, not arbitrary target RNA.
-3. **Species & off-targets** — upload an uncompressed transcript FASTA (up to 100 MiB), identify its species and run a configured LaMAR job or import results. FASTA records, file checksum, RNA input, result coordinates and exact contexts are verified. A separate local preview remains limited to 25,000 nt.
-4. **Scientist CSV** — export the target, candidate proteins, separate model outputs, site coordinates, reference/model provenance and missing-score status in one UTF-8 CSV. Project JSON preserves the workflow; reselect the original FASTA to reverify saved site evidence before exporting its scores or resuming analysis. The existing HTML report continues to describe the local preview.
+2. **Build PUF** — assign repeats and TRMs, and save protein candidates. The editor has one view for sequence selection.
+3. **Export** — download the target and unscored candidate proteins as UTF-8 CSV. Project JSON preserves the saved project.
+4. **Run locally** — install ORCA on your computer, enter the website CSV and species FASTA paths, and run the pinned ESM-2 and LaMAR models. Download ranking, site and combined CSV files.
 
 ## Capabilities and scope
 
-- Local reference-subset screening and versioned TRM/scaffold data are included.
-- Supplied examples, archived experimental measurements and imported results are distinguished in the application. The default workbench demonstration uses synthetic data.
-- Structure assessment requires matching protein/RNA evidence. Site-specific classifiers retain their documented training scope and frozen thresholds.
-- The PUF ranker bundles a passive numeric export of the supplied trained checkpoint; it needs no new runtime dependency or user service configuration. It supports substitutions in the fixed 492-aa coordinate system, retains the original cached ESM-2 reference context, and does not recompute ESM-2 embeddings or validate deletions experimentally.
-- **No LaMAR backend has been deployed by this change.** A same-origin gateway is included, with administrator-only upstream configuration. The supplied module 4 archives have checkpoints but lack `LAMAR.sequence_classification_patch` and a reproducible inference environment. Missing scores remain unavailable; no editing probability is fabricated.
-- Module 4 results retain their raw scalar ranking values; they are distinct from the legacy 0–1 context-import format. Cross-species validity and prediction conditioned on a new PUF have not been established.
-- Uploading a file checks it locally. Explicitly selecting **Run LAMAR** sends the target, species and FASTA to the administrator-configured service. No user-facing API URL or credential field is required.
-- Scientific methods, provenance and limitations are available in the application.
+- Versioned TRM/scaffold definitions and coordinate conventions are unchanged.
+- The website prepares inputs. Model inference runs in the downloaded local application.
+- The local ESM-2 model recomputes the original masked-reference features and uses the supplied frozen Ridge coefficients for the fixed C295/C388/C871 assays. The ranker supports its fixed 492/493-aa scaffold; incompatible proteins remain unscored.
+- LaMAR retains separate raw RNA-context scores and every C in the supplied FASTA. These scores are independent of the selected PUF and are not editing probabilities.
+- The default demonstration uses synthetic input. Methods retains scientific provenance and archived evidence.
+- Input and output checks establish software behavior, not biological validity.
 
 ## Planned
 
@@ -58,9 +56,19 @@ These deliverables are **not yet complete**:
 
 - A tutorial video.
 - A Wiki guide to the tool's purpose and workflow logic, with a data-collection template and submission entry point.
-- A one-click local LaMAR package.
+- Windows and Intel Mac acceptance testing for the local application preview.
 
-The local LaMAR inference environment and missing components remain unfinished. Detection of actual off-target editing from raw FASTQ is not implemented.
+The public website's hosted LaMAR service remains unconfigured. The local application preview provides a pinned 101-nt CPU runner. Detection of actual off-target editing from raw FASTQ is not implemented.
+
+## Local application downloads
+
+Open **Work → 03 Export** for Windows and macOS installer cards. Both entries contain the same lightweight ZIP and platform launchers. On first launch, the installer downloads an isolated Python runtime, pinned dependencies, ESM-2 and the supplied ORCA LaMAR checkpoint, verifying model checksums. Installation and inference stay inside the extraction directory. No system-wide dependency is installed.
+
+The current installer lives at `/downloads/v0.2.0-preview/windows.zip` and `/downloads/v0.2.0-preview/macos.zip`. Its version, size and SHA256 are recorded in `data/local-installer-release.json`. Setup details and platform validation limits are in `public/orca-local-v0.2-guide.txt` and inside the ZIP.
+
+Keep the immutable `/downloads/v0.1.0-preview/windows.zip` R2 download route: the v0.2 installer extracts the supplied LaMAR model from it. The old manifest `data/local-download-release.json`, byte ranges and storage implementation remain intact. Do not replace that archive or remove the route while installers rely on it.
+
+Windows x64 and Intel Mac remain preview platforms. Apple Silicon checks cover a real small model fixture and software tests; full species-scale performance and clean-machine compatibility are not claimed.
 
 ## Documentation
 
